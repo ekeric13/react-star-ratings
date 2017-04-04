@@ -1,0 +1,29 @@
+{
+  "name": "react-star-ratings",
+  "version": "1.0.0",
+  "description": "A customizable star rating component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eric Kennedy <ekeric13@gmail.com> (https://github.com/ekeric13)",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "react",
+    "star",
+    "rating",
+    "ratings"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ekeric13/react-star-ratings.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ekeric13/react-star-ratings/issues"
+  },
+  "homepage": "https://github.com/ekeric13/react-star-ratings",
+  "dependencies": {
+    "classnames": "^2.2.1",
+    "react": "^0.14.7"
+  }
+}

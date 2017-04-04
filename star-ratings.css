@@ -1,0 +1,63 @@
+.star-ratings {
+  position: relative;
+  display: inline-flex;
+}
+
+.star-svg {
+  width: 50px;
+  height: 50px;
+}
+
+.default .star-svg {
+  width: 14px;
+  height: 14px;
+}
+
+.some-modal .star-svg {
+  width: 18px;
+  height: 18px;
+}
+
+.star-container {
+  position: relative;
+}
+
+.default .star-container {
+  margin-right: 7px;
+}
+
+.star-svg .star {
+  fill: #cbd3e3;
+}
+
+.star-svg.star-level .star {
+  fill: #6d7a82;
+}
+
+.star-svg.star-selected .star {
+  fill: #ff9700;
+}
+
+.star-svg.star-level.star-multi-level .star {
+  /* fill: url('<window.location.pathname>#starGrad')
+     pathname is most likely "/"
+  */
+  /*fill: url('/#starGrad');*/
+}
+
+.star-grad {
+  position: absolute;
+  z-index: 0;
+  width: 10px;
+  height: 10px;
+}
+
+.stop-color-first {
+  stop-color: #6d7a82;
+  stop-opacity: 1;
+}
+
+.stop-color-final {
+  stop-color: #cbd3e3;
+  stop-opacity: 1;
+}
