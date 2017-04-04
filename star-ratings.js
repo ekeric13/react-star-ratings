@@ -117,6 +117,7 @@ class StarRatings extends Component {
         style={{
           position: 'relative',
           display: 'inline-flex',
+          boxSizing: 'border-box',
         }}
       >
         <svg 
@@ -161,13 +162,12 @@ StarRatings.defaultProps = {
   numOfStars: 5,
   changeRating: function(){},
   isSelectable: false,
-  isAggregateRating: false,
+  isAggregateRating: true,
   starSelectingHoverColor: 'rgb(255, 251, 0)',
   starRatedColor: 'rgb(109, 122, 130)',
   starEmptyColor: 'rgb(203, 211, 227)',
   starWidthAndHeight: '50px',
   starSpacing: '7px'
-
 };
 
 export default StarRatings;
