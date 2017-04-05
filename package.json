@@ -1,6 +1,6 @@
 {
   "name": "react-star-ratings",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A customizable star rating component",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,16 @@
   "license": "BSD-3-Clause",
   "keywords": [
     "react",
+    "component",
     "star",
+    "stars",
     "rating",
-    "ratings"
+    "ratings",
+    "star ratings",
+    "rate",
+    "input",
+    "svg",
+    "SVG"
   ],
   "repository": {
     "type": "git",
