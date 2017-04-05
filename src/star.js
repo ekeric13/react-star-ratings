@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 
-class Star extends Component {
+class Star extends React.Component {
   constructor() {
     super();
     this.highlightStar = this.highlightStar.bind(this);
@@ -30,9 +30,9 @@ class Star extends Component {
     var starContainerStyle = {
       position: 'relative',
       display: 'inline-block',
-      verticalAlign: 'top'
+      verticalAlign: 'top',
     };
-
+    
     if ( this.props.isSelectable ) {
       starContainerStyle.cursor = 'pointer';
     }
@@ -49,7 +49,9 @@ class Star extends Component {
     var starSvgStyle = {
       width: this.props.starWidthAndHeight,
       height: this.props.starWidthAndHeight,
+      transition: 'transform .2s ease-in-out'
     };
+
     var pathStyle = {
       fill: this.props.starEmptyColor
     };
@@ -61,6 +63,7 @@ class Star extends Component {
         'star-svg': true,
         'star-level': this.props.isStarred && !this.props.anyStarHighlighted,
         'star-selected': this.props.isHighlighted,
+        'star-hovered-over': this.props.currentHighlightedStar
       });
 
       if ( this.props.isStarred && !this.props.anyStarHighlighted ) {
@@ -70,7 +73,7 @@ class Star extends Component {
       } else if ( this.props.isHighlighted ) {
         pathStyle = {
           fill: this.props.starSelectingHoverColor
-        };
+        };        
       }
 
     } else {
@@ -105,12 +108,19 @@ class Star extends Component {
 
       }
     }
-
+    
+    if ( this.props.currentHighlightedStar ) {
+      starSvgStyle.transform = 'scale(1.1)';
+    }
+    
+    pathStyle.transition = 'fill .2s ease-in-out';
+    
     if ( this.props.ignoreInlineStyles ) {
       starContainerStyle = {};
       starSvgStyle = {};
       pathStyle = {};
     }
+
     return (
       <div 
         className="star-container"

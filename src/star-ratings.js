@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import Star from './star';
 
-class StarRatings extends Component {
+class StarRatings extends React.Component {
   constructor() {
     super();
 
@@ -40,12 +40,14 @@ class StarRatings extends Component {
       let isStarred = false;
       let isHighlighted = false;
       let isIntegerStar = true;
+      let currentHighlightedStar = false;
       if (level <= rating) {
         isStarred = true;
       }
       if (level <= highlightValue) {
         isHighlighted = true;
         anyStarHighlighted = true;
+        currentHighlightedStar = level === highlightValue;
       }
       if (!isInteger) {
         if (level > rating && level - 1 < rating) {
@@ -73,12 +75,13 @@ class StarRatings extends Component {
           starWidthAndHeight={this.props.starWidthAndHeight}
           starSpacing={this.props.starSpacing}
           starSelectingHoverColor={this.props.starSelectingHoverColor}
-          gradientPathName={this.props.gradientPathName}
-          ignoreInlineStyles={this.props.ignoreInlineStyles}
           starRatedColor={this.props.starRatedColor}
           starEmptyColor={this.props.starEmptyColor}
+          gradientPathName={this.props.gradientPathName}
+          ignoreInlineStyles={this.props.ignoreInlineStyles}
           firstStar={firstStar}
           lastStar={lastStar}
+          currentHighlightedStar={currentHighlightedStar}
         />
       );
     });
@@ -112,7 +115,7 @@ class StarRatings extends Component {
       }
       titleText = `${formattedRating} ${starText}`;
     }    
-
+    
     var starRatingsStyle = {
       position: 'relative',
       boxSizing: 'border-box',
@@ -130,6 +133,7 @@ class StarRatings extends Component {
       stopColorFirstStyle = {};
       stopColorFinalStyle = {};
     }
+    
     return (
       <div 
         className="star-ratings" 
