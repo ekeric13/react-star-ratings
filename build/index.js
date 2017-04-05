@@ -39,8 +39,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var StarRatings = function (_Component) {
-  _inherits(StarRatings, _Component);
+var StarRatings = function (_React$Component) {
+  _inherits(StarRatings, _React$Component);
 
   function StarRatings() {
     _classCallCheck(this, StarRatings);
@@ -89,12 +89,14 @@ var StarRatings = function (_Component) {
         var isStarred = false;
         var isHighlighted = false;
         var isIntegerStar = true;
+        var currentHighlightedStar = false;
         if (level <= rating) {
           isStarred = true;
         }
         if (level <= highlightValue) {
           isHighlighted = true;
           anyStarHighlighted = true;
+          currentHighlightedStar = level === highlightValue;
         }
         if (!isInteger) {
           if (level > rating && level - 1 < rating) {
@@ -121,12 +123,13 @@ var StarRatings = function (_Component) {
           starWidthAndHeight: _this2.props.starWidthAndHeight,
           starSpacing: _this2.props.starSpacing,
           starSelectingHoverColor: _this2.props.starSelectingHoverColor,
-          gradientPathName: _this2.props.gradientPathName,
-          ignoreInlineStyles: _this2.props.ignoreInlineStyles,
           starRatedColor: _this2.props.starRatedColor,
           starEmptyColor: _this2.props.starEmptyColor,
+          gradientPathName: _this2.props.gradientPathName,
+          ignoreInlineStyles: _this2.props.ignoreInlineStyles,
           firstStar: firstStar,
-          lastStar: lastStar
+          lastStar: lastStar,
+          currentHighlightedStar: currentHighlightedStar
         });
       });
 
@@ -177,6 +180,7 @@ var StarRatings = function (_Component) {
         stopColorFirstStyle = {};
         stopColorFinalStyle = {};
       }
+
       return _react2.default.createElement(
         'div',
         {
@@ -209,7 +213,7 @@ var StarRatings = function (_Component) {
   }]);
 
   return StarRatings;
-}(_react.Component);
+}(_react2.default.Component);
 
 StarRatings.propTypes = {
   rating: _react.PropTypes.number,
@@ -266,8 +270,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Star = function (_Component) {
-  _inherits(Star, _Component);
+var Star = function (_React$Component) {
+  _inherits(Star, _React$Component);
 
   function Star() {
     _classCallCheck(this, Star);
@@ -324,8 +328,10 @@ var Star = function (_Component) {
 
       var starSvgStyle = {
         width: this.props.starWidthAndHeight,
-        height: this.props.starWidthAndHeight
+        height: this.props.starWidthAndHeight,
+        transition: 'transform .2s ease-in-out'
       };
+
       var pathStyle = {
         fill: this.props.starEmptyColor
       };
@@ -336,7 +342,8 @@ var Star = function (_Component) {
         starClasses = (0, _classnames2.default)({
           'star-svg': true,
           'star-level': this.props.isStarred && !this.props.anyStarHighlighted,
-          'star-selected': this.props.isHighlighted
+          'star-selected': this.props.isHighlighted,
+          'star-hovered-over': this.props.currentHighlightedStar
         });
 
         if (this.props.isStarred && !this.props.anyStarHighlighted) {
@@ -379,11 +386,18 @@ var Star = function (_Component) {
         }
       }
 
+      if (this.props.currentHighlightedStar) {
+        starSvgStyle.transform = 'scale(1.2)';
+      }
+
+      pathStyle.transition = 'fill .2s ease-in-out';
+
       if (this.props.ignoreInlineStyles) {
         starContainerStyle = {};
         starSvgStyle = {};
         pathStyle = {};
       }
+
       return _react2.default.createElement(
         'div',
         {
@@ -411,6 +425,6 @@ var Star = function (_Component) {
   }]);
 
   return Star;
-}(_react.Component);
+}(_react2.default.Component);
 
 exports.default = Star;
