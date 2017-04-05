@@ -1,7 +1,7 @@
 {
   "name": "react-star-ratings",
-  "version": "1.0.5",
-  "description": "A customizable star rating component",
+  "version": "1.0.6",
+  "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
