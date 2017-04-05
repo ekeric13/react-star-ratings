@@ -12,6 +12,11 @@ npm install --save react-star-ratings
 
 ### [codepen playground](https://codepen.io/ekeric13/project/full/DkJYpA/)
 
+
+### Demo Example Image
+
+![](http://i.imgur.com/a8eWxhd.png)
+
 ## Usage
 
 ```js
