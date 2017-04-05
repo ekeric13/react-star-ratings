@@ -38,10 +38,8 @@
   fill: #ff9700;
 }
 
+/* Recommend to do this inline*/
 .star-svg.star-level.star-multi-level .star {
-  /* fill: url('<window.location.pathname>#starGrad')
-     pathname is most likely "/"
-  */
   /*fill: url('/#starGrad');*/
 }
 

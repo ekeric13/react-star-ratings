@@ -74,6 +74,7 @@ class StarRatings extends Component {
           starSpacing={this.props.starSpacing}
           starSelectingHoverColor={this.props.starSelectingHoverColor}
           gradientPathName={this.props.gradientPathName}
+          ignoreInlineStyles={this.props.ignoreInlineStyles}
           starRatedColor={this.props.starRatedColor}
           starEmptyColor={this.props.starEmptyColor}
           firstStar={firstStar}
@@ -111,24 +112,32 @@ class StarRatings extends Component {
       }
       titleText = `${formattedRating} ${starText}`;
     }    
+
+    var starRatingsStyle = {
+      position: 'relative',
+      boxSizing: 'border-box',
+    };
+    var starGradientStyle = {
+      position: 'absolute',
+      zIndex: '0',
+      width: '10px',
+      height: '10px',
+    };
+    if ( this.props.ignoreInlineStyles ) {
+      starRatingsStyle = {};
+      starGradientStyle = {};
+      stopColorFirstStyle = {};
+      stopColorFinalStyle = {};
+    }
     return (
       <div 
         className="star-ratings" 
         title={ titleText }
-        style={{
-          position: 'relative',
-          display: 'inline-flex',
-          boxSizing: 'border-box',
-        }}
+        style={starRatingsStyle}
       >
         <svg 
           className="star-grad"
-          style={{
-            position: 'absolute',
-            zIndex: '0',
-            width: '10px',
-            height: '10px',
-          }}
+          style={starGradientStyle}
         >
           <defs>
             <linearGradient id={ fillId } x1="0%" y1="0%" x2="100%" y2="0%">
@@ -157,6 +166,7 @@ StarRatings.propTypes = {
   starWidthAndHeight: PropTypes.string,
   starSpacing: PropTypes.string,
   gradientPathName: PropTypes.string,
+  ignoreInlineStyles: PropTypes.bool,
 };
 
 StarRatings.defaultProps = {
@@ -171,6 +181,7 @@ StarRatings.defaultProps = {
   starWidthAndHeight: '50px',
   starSpacing: '7px',
   gradientPathName: '',
+  ignoreInlineStyles: false
 };
 
 export default StarRatings;

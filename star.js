@@ -29,6 +29,8 @@ class Star extends Component {
 
     var starContainerStyle = {
       position: 'relative',
+      display: 'inline-block',
+      verticalAlign: 'top'
     };
 
     if ( this.props.isSelectable ) {
@@ -104,6 +106,10 @@ class Star extends Component {
       }
     }
 
+    if ( this.props.ignoreInlineStyles ) {
+      starContainerStyle = {};
+      starSvgStyle = {};
+    }
     return (
       <div 
         className="star-container"
