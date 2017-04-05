@@ -91,6 +91,7 @@ Here is a stackoverflow post that I found that was related to this issue: http:/
 
 ## Try Example And Contribute
 
-To try out the example in this repo: First clone this repo. And then using [a complicated build set up stolen from TJ](https://github.com/tj/react-fatigue-dev) you run `make start` and go to port 5000. [I actually used a forked version of that with slight changes that makes it easier to build multiple files.](https://github.com/ekeric13/react-fatigue-dev)
+To try out the example in this repo: First clone this repo. And then using [a complicated build set up stolen from TJ](https://github.com/tj/react-fatigue-dev) you run `make start` and go to port 5000. [I actually used a forked version of that with slight changes that makes it easier to build multiple files.](https://github.com/ekeric13/react-fatigue-dev) The only change I made pertains to how the [babel cli](http://babeljs.io/docs/usage/cli/) is used
 
-If you want to contribute: Make changes in the src folder. And then run `make build`. And of course test by running `make start`. The `make build` command compiles react and es6 stuff using babel from `src/` into `build/`.
+If you want to contribute: Make changes in the src folder. And then run `make build`. And of course test by running `make start`. 
+The `make build` command compiles react and es6 stuff using babel from `src/` into `build/`.
