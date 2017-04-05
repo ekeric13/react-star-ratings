@@ -8,7 +8,12 @@
 npm install --save react-star-ratings
 ```
 
+## Demo
+
+### [codepen playground](https://codepen.io/ekeric13/project/full/DkJYpA/)
+
 ## Usage
+
 ```js
 import StarRatings from './react-star-ratings';
 
@@ -58,14 +63,15 @@ class Bar extends Component {
 | changeRating | function | ()=>{} | Callback that will be passed the new rating a user selects | `const setNewRating = (rating) => this.props.dispatch( fooActions.setRating(rating) )` |
 | isSelectable | boolean | false | Determines whether user can select a new rating or whether the stars are just for display | `true` |
 | isAggregateRating | boolean | true | Determines whether stars' will show a fraction of a star (.5 stars) | `false` |
-| starSelectingHoverColor | string | 'rgb(255, 251, 0)' | Color of star when hovering over it in selection mode | `yellow` |
+| starSelectingHoverColor | string | 'rgb(230, 67, 47)' | Color of star when hovering over it in selection mode | `yellow` |
 | starRatedColor | string | 'rgb(109, 122, 130)' | Color of stars that the user has rated | `black` |
 | starEmptyColor | string | 'rgb(203, 211, 227)' | Color of stars that the use hasn't rated | `grey` |
 | starWidthAndHeight | string | '50px' | The width and height of the star | `15px` |
 | starSpacing | string | '7px' | The spacing between the stars | `0` |
+| gradientPathName | string | '' | gradientPathname needed if app's path is not at the root | `/app/` |
 
 
 ## Browser Support
 
 Supports Chrome, firefox, safari, edge, and ie 9+.
-Star is SVG, so this library fails for any browser that doesn't support svg.
+The star is SVG, so this library fails for any browser that doesn't support svg.

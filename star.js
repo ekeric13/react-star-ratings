@@ -29,15 +29,19 @@ class Star extends Component {
 
     var starContainerStyle = {
       position: 'relative',
-      cursor: 'pointer',
     };
+
+    if ( this.props.isSelectable ) {
+      starContainerStyle.cursor = 'pointer';
+    }
 
     if ( this.props.firstStar ) {
       starContainerStyle.paddingRight = this.props.starSpacing;
     } else if ( this.props.lastStar ) {
       starContainerStyle.paddingLeft = this.props.starSpacing;
     } else {
-      starContainerStyle.padding = this.props.starSpacing;
+      starContainerStyle.paddingLeft = this.props.starSpacing;
+      starContainerStyle.paddingRight = this.props.starSpacing;
     }
 
     var starSvgStyle = {
@@ -77,7 +81,7 @@ class Star extends Component {
 
         if ( this.props.isStarred && !this.props.isInteger ) {
           pathStyle = {
-            'fill':`url('${window.location.pathname}/#${this.props.fillId}')`
+            'fill':`url('${this.props.gradientPathName}#${this.props.fillId}')`
           };
         } else if ( this.props.isStarred ) {
           pathStyle = {
@@ -124,4 +128,4 @@ class Star extends Component {
   }
 }
 
-export default star;
+export default Star;

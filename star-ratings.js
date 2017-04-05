@@ -36,7 +36,7 @@ class StarRatings extends Component {
     const highlightValue = this.state.highlightValue;
     let anyStarHighlighted = false;
     var fillId = `starGrad${Math.random().toFixed(15).slice(2)}`
-    let starsArray = numOfStarsArray.map((level) => {
+    let starsArray = numOfStarsArray.map((level, i) => {
       let isStarred = false;
       let isHighlighted = false;
       let isIntegerStar = true;
@@ -70,9 +70,10 @@ class StarRatings extends Component {
           highlightStar={this.highlightStar}
           unHighlightStar={this.unHighlightStar}
           changeRating={this.props.changeRating}
-          starSize={this.props.starWidthAndHeight}
+          starWidthAndHeight={this.props.starWidthAndHeight}
           starSpacing={this.props.starSpacing}
           starSelectingHoverColor={this.props.starSelectingHoverColor}
+          gradientPathName={this.props.gradientPathName}
           starRatedColor={this.props.starRatedColor}
           starEmptyColor={this.props.starEmptyColor}
           firstStar={firstStar}
@@ -98,11 +99,11 @@ class StarRatings extends Component {
 
     let titleText;
     if ( this.props.isAggregateRating ) {
-      let formattedRating = rating.toFixed(1);
+      let formattedRating = rating.toFixed(2);
       if ( rating === 0 ) {
         formattedRating = '0';
       } else if ( formattedRating.lastIndexOf(0) !== -1 ) {
-        formattedRating = formattedRating.slice(0,1);
+        formattedRating = formattedRating.slice(0,2);
       }
       let starText = 'Stars';
       if ( formattedRating === '1' ) {
@@ -155,6 +156,7 @@ StarRatings.propTypes = {
   starEmptyColor: PropTypes.string,
   starWidthAndHeight: PropTypes.string,
   starSpacing: PropTypes.string,
+  gradientPathName: PropTypes.string,
 };
 
 StarRatings.defaultProps = {
@@ -163,11 +165,12 @@ StarRatings.defaultProps = {
   changeRating: function(){},
   isSelectable: false,
   isAggregateRating: true,
-  starSelectingHoverColor: 'rgb(255, 251, 0)',
+  starSelectingHoverColor: 'rgb(230, 67, 47)',
   starRatedColor: 'rgb(109, 122, 130)',
   starEmptyColor: 'rgb(203, 211, 227)',
   starWidthAndHeight: '50px',
-  starSpacing: '7px'
+  starSpacing: '7px',
+  gradientPathName: '',
 };
 
 export default StarRatings;
