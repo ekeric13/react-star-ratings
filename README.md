@@ -88,3 +88,9 @@ The star is SVG, so this library fails for any browser that doesn't support svg.
 I use the css property `fill: 'url(#starGrad<randomNum>)';` to fill in just a percentage of a star. It has some weird bugs depending on the pathname of the app. Normally SPA's have `window.location.pathname === '/'`, but if you append `window.location.origin` with the pathname of say `app`, so that `window.location.pathname === '/app/'`, then you need a gradientPathName of `'/app/'`.
 
 Here is a stackoverflow post that I found that was related to this issue: http://stackoverflow.com/questions/36774188/svg-internal-url-links-and-iframes-on-wirecloud
+
+## Try Example And Contribute
+
+To try out the example repo clone this repo. And then using [a complicated build set up stolen from TJ](https://github.com/tj/react-fatigue-dev) you run `make start` and go to port 5000. [I actually used a forked version of that with slight changes that makes it easier to build multiple files.](https://github.com/ekeric13/react-fatigue-dev)
+
+If you want to contribute make changes in the src folder. And then run `make build`. And then test by running `make start`. The `make build` command compiles react and es6 stuff using babel from `src/` into `build/`.

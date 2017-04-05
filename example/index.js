@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import StarRatings from '../index'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import StarRatings from '../index';
 
 class App extends Component {
   constructor(props) {
