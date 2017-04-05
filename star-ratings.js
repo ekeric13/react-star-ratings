@@ -116,6 +116,7 @@ class StarRatings extends Component {
     var starRatingsStyle = {
       position: 'relative',
       boxSizing: 'border-box',
+      display: 'inline-block'
     };
     var starGradientStyle = {
       position: 'absolute',
