@@ -1,6 +1,6 @@
 {
   "name": "react-star-ratings",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "index.js",
   "scripts": {
@@ -33,12 +33,9 @@
     "url": "https://github.com/ekeric13/react-star-ratings/issues"
   },
   "homepage": "https://github.com/ekeric13/react-star-ratings",
-  "dependencies": {
-    "classnames": "^2.2.1",
-    "react": "^0.14.7"
-  },
   "devDependencies": {
-    "react-fatigue-dev": "github:tj/react-fatigue-dev"
+    "react-fatigue-dev": "github:tj/react-fatigue-dev",
+    "classnames": "^2.2.1"
   },
   "browserify": {
     "transform": [
