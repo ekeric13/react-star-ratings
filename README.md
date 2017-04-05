@@ -2,7 +2,7 @@
 
 > Customizable react star ratings. SVG stars that show aggregate star ratings to the hundreths decimal point.
 
-## Install
+## [Install](https://www.npmjs.com/package/react-star-ratings)
 
 ```shell
 npm install --save react-star-ratings
@@ -85,6 +85,6 @@ The star is SVG, so this library fails for any browser that doesn't support svg.
 
 ### Potential Gradient Path Name Issue
 
-I use the css property `fill: 'url(#starGrad)';` to fill in just a percentage of a star. It has some weird bugs depending on the pathname of the app. Normally SPA's have `window.location.pathname === '/'`, but if you append `window.location.origin` with the pathname of say `app`, so that `window.location.pathname === '/app/'`, then you need a gradientPathName of `'/app/'`.
+I use the css property `fill: 'url(#starGrad<randomNum>)';` to fill in just a percentage of a star. It has some weird bugs depending on the pathname of the app. Normally SPA's have `window.location.pathname === '/'`, but if you append `window.location.origin` with the pathname of say `app`, so that `window.location.pathname === '/app/'`, then you need a gradientPathName of `'/app/'`.
 
 Here is a stackoverflow post that I found that was related to this issue: http://stackoverflow.com/questions/36774188/svg-internal-url-links-and-iframes-on-wirecloud

@@ -1,6 +1,6 @@
 {
   "name": "react-star-ratings",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "index.js",
   "scripts": {
@@ -16,10 +16,14 @@
     "rating",
     "ratings",
     "star ratings",
+    "star rating",
     "rate",
     "input",
     "svg",
-    "SVG"
+    "SVG",
+    "star rating component",
+    "svg icons",
+    "react star rating component"
   ],
   "repository": {
     "type": "git",
