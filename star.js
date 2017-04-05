@@ -109,6 +109,7 @@ class Star extends Component {
     if ( this.props.ignoreInlineStyles ) {
       starContainerStyle = {};
       starSvgStyle = {};
+      pathStyle = {};
     }
     return (
       <div 
