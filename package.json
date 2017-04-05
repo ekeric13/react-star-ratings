@@ -1,6 +1,6 @@
 {
   "name": "react-star-ratings",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "index.js",
   "scripts": {
@@ -36,5 +36,13 @@
   "dependencies": {
     "classnames": "^2.2.1",
     "react": "^0.14.7"
+  },
+  "devDependencies": {
+    "react-fatigue-dev": "github:tj/react-fatigue-dev"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
   }
 }
