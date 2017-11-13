@@ -4,7 +4,8 @@
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "make build"
   },
   "author": "Eric Kennedy <ekeric13@gmail.com> (https://github.com/ekeric13)",
   "license": "BSD-3-Clause",
@@ -39,7 +40,11 @@
     ]
   },
   "devDependencies": {
-    "react-fatigue-dev": "github:ekeric13/react-fatigue-dev",
-    "classnames": "^2.2.1"
+    "react-fatigue-dev": "github:ekeric13/react-fatigue-dev"
+  },
+  "dependencies": {
+    "classnames": "^2.2.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.0"
   }
 }
