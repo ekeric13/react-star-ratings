@@ -23,9 +23,9 @@ class Star extends React.Component {
 
   render() {
     let starClasses;
-    let highlightStar = false;
-    let unHighlightStar = false;
-    let changeRating = false;
+    let highlightStar = null;
+    let unHighlightStar = null;
+    let changeRating = null;
 
     var starContainerStyle = {
       position: 'relative',

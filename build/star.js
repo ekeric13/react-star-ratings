@@ -55,9 +55,9 @@ var Star = function (_React$Component) {
     key: 'render',
     value: function render() {
       var starClasses = void 0;
-      var highlightStar = false;
-      var unHighlightStar = false;
-      var changeRating = false;
+      var highlightStar = null;
+      var unHighlightStar = null;
+      var changeRating = null;
 
       var starContainerStyle = {
         position: 'relative',
