@@ -141,11 +141,10 @@ var StarRatings = function (_React$Component) {
 
       var titleText = void 0;
       if (this.props.isAggregateRating) {
-        var formattedRating = rating.toFixed(2);
-        if (rating === 0) {
-          formattedRating = '0';
-        } else if (formattedRating.lastIndexOf(0) !== -1) {
-          formattedRating = formattedRating.slice(0, 2);
+        // fix it at 2 decimal places and remove trailing 0s
+        var formattedRating = +rating.toFixed(2).toString();
+        if (Number.isInteger(rating)) {
+          formattedRating = String(rating);
         }
         var starText = 'Stars';
         if (formattedRating === '1') {
