@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import StarRatings from 'react-star-ratings';
+// import StarRatings from '../../src';
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class App extends Component {
         </div>
         <div>
           <StarRatings
-            rating={3.33}
+            rating={3.90}
             isSelectable={false}
             isAggregateRating={true}
             starWidthAndHeight={'40px'}
