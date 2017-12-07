@@ -36,7 +36,7 @@ class App extends Component {
         </div>
         <div>
           <StarRatings
-            rating={3.90}
+            rating={3.903}
             isSelectable={false}
             isAggregateRating={true}
             starWidthAndHeight={'40px'}

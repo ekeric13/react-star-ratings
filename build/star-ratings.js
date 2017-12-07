@@ -142,7 +142,7 @@ var StarRatings = function (_React$Component) {
       var titleText = void 0;
       if (this.props.isAggregateRating) {
         // fix it at 2 decimal places and remove trailing 0s
-        var formattedRating = +rating.toFixed(2).toString();
+        var formattedRating = parseFloat(rating.toFixed(2)).toString();
         if (Number.isInteger(rating)) {
           formattedRating = String(rating);
         }
