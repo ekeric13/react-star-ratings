@@ -99,11 +99,11 @@ var StarRatings = function (_React$Component) {
         var isHighlighted = false;
         var isIntegerStar = true;
         var currentHighlightedStar = false;
-        if (clickValue === highlightValue && clickValue !== -Infinity) {
-          isClicked = true;
-        }
         if (level <= rating) {
           isStarred = true;
+          if (clickValue === highlightValue && clickValue !== -Infinity) {
+            isClicked = true;
+          }
         }
         if (level <= highlightValue) {
           isHighlighted = true;
@@ -135,7 +135,8 @@ var StarRatings = function (_React$Component) {
           changeRating: _this2.changeRating,
           starWidthAndHeight: _this2.props.starWidthAndHeight,
           starSpacing: _this2.props.starSpacing,
-          starSelectingHoverColor: _this2.props.starSelectingHoverColor,
+          starHoverColor: _this2.props.starHoverColor,
+          starSelectingColor: _this2.props.starSelectingColor,
           starRatedColor: _this2.props.starRatedColor,
           starEmptyColor: _this2.props.starEmptyColor,
           gradientPathName: _this2.props.gradientPathName,
@@ -233,7 +234,8 @@ StarRatings.propTypes = {
   changeRating: _propTypes2.default.func,
   isSelectable: _propTypes2.default.bool,
   isAggregateRating: _propTypes2.default.bool,
-  starSelectingHoverColor: _propTypes2.default.string,
+  starHoverColor: _propTypes2.default.string,
+  starSelectingColor: _propTypes2.default.string,
   starRatedColor: _propTypes2.default.string,
   starEmptyColor: _propTypes2.default.string,
   starWidthAndHeight: _propTypes2.default.string,
@@ -248,9 +250,10 @@ StarRatings.defaultProps = {
   changeRating: function changeRating() {},
   isSelectable: false,
   isAggregateRating: true,
-  starSelectingHoverColor: '#fa8b00',
+  starHoverColor: '#fa8b00',
+  starSelectingColor: '#ffb115',
   starRatedColor: '#ffb115',
-  starEmptyColor: 'rgb(203, 211, 227)',
+  starEmptyColor: '#cccccc',
   starWidthAndHeight: '25px',
   starSpacing: '0',
   gradientPathName: '',

@@ -54,7 +54,6 @@ var Star = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log(this.props.isClicked);
       var starClasses = void 0;
       var highlightStar = null;
       var unHighlightStar = null;
@@ -103,9 +102,13 @@ var Star = function (_React$Component) {
           pathStyle = {
             fill: this.props.starRatedColor
           };
+        } else if (this.props.isClicked) {
+          pathStyle = {
+            fill: this.props.starSelectingColor
+          };
         } else if (this.props.isHighlighted) {
           pathStyle = {
-            fill: this.props.starSelectingHoverColor
+            fill: this.props.starHoverColor
           };
         }
       } else {
