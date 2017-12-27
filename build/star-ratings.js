@@ -40,8 +40,10 @@ var StarRatings = function (_React$Component) {
 
     _this.highlightStar = _this.highlightStar.bind(_this);
     _this.unHighlightStar = _this.unHighlightStar.bind(_this);
+    _this.changeRating = _this.changeRating.bind(_this);
     _this.state = {
-      highlightValue: -Infinity
+      highlightValue: -Infinity,
+      clickValue: -Infinity
     };
     return _this;
   }
@@ -52,13 +54,27 @@ var StarRatings = function (_React$Component) {
       this.setState({
         highlightValue: starRating
       });
+      if (this.state.clickValue !== starRating) {
+        this.setState({
+          clickValue: -Infinity
+        });
+      }
     }
   }, {
     key: 'unHighlightStar',
     value: function unHighlightStar() {
       this.setState({
-        highlightValue: -Infinity
+        highlightValue: -Infinity,
+        clickValue: -Infinity
       });
+    }
+  }, {
+    key: 'changeRating',
+    value: function changeRating(rating) {
+      this.setState({
+        clickValue: rating
+      });
+      this.props.changeRating(rating);
     }
   }, {
     key: 'render',
@@ -73,14 +89,19 @@ var StarRatings = function (_React$Component) {
 
       var isInteger = Number.isInteger(rating);
 
+      var clickValue = this.state.clickValue;
       var highlightValue = this.state.highlightValue;
       var anyStarHighlighted = false;
       var fillId = 'starGrad' + Math.random().toFixed(15).slice(2);
       var starsArray = numOfStarsArray.map(function (level, i) {
+        var isClicked = false;
         var isStarred = false;
         var isHighlighted = false;
         var isIntegerStar = true;
         var currentHighlightedStar = false;
+        if (clickValue === highlightValue && clickValue !== -Infinity) {
+          isClicked = true;
+        }
         if (level <= rating) {
           isStarred = true;
         }
@@ -102,6 +123,7 @@ var StarRatings = function (_React$Component) {
           fillId: fillId,
           key: level,
           rating: level,
+          isClicked: isClicked,
           isStarred: isStarred,
           isSelectable: _this2.props.isSelectable,
           isAggregateRating: _this2.props.isAggregateRating,
@@ -110,7 +132,7 @@ var StarRatings = function (_React$Component) {
           anyStarHighlighted: anyStarHighlighted,
           highlightStar: _this2.highlightStar,
           unHighlightStar: _this2.unHighlightStar,
-          changeRating: _this2.props.changeRating,
+          changeRating: _this2.changeRating,
           starWidthAndHeight: _this2.props.starWidthAndHeight,
           starSpacing: _this2.props.starSpacing,
           starSelectingHoverColor: _this2.props.starSelectingHoverColor,
@@ -226,11 +248,11 @@ StarRatings.defaultProps = {
   changeRating: function changeRating() {},
   isSelectable: false,
   isAggregateRating: true,
-  starSelectingHoverColor: 'rgb(230, 67, 47)',
-  starRatedColor: 'rgb(109, 122, 130)',
+  starSelectingHoverColor: '#fa8b00',
+  starRatedColor: '#ffb115',
   starEmptyColor: 'rgb(203, 211, 227)',
-  starWidthAndHeight: '50px',
-  starSpacing: '7px',
+  starWidthAndHeight: '25px',
+  starSpacing: '0',
   gradientPathName: '',
   ignoreInlineStyles: false
 };
