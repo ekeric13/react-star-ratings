@@ -10,8 +10,10 @@ class StarRatings extends React.Component {
 
     this.highlightStar = this.highlightStar.bind(this);
     this.unHighlightStar = this.unHighlightStar.bind(this);
+    this.changeRating = this.changeRating.bind(this);
     this.state = {
       highlightValue: -Infinity,
+      clickValue: -Infinity,
     };
   }
 
@@ -19,12 +21,25 @@ class StarRatings extends React.Component {
     this.setState({
       highlightValue: starRating,
     });
+    if (this.state.clickValue !== starRating) {
+      this.setState({
+        clickValue: -Infinity,
+      });
+    }
   }
 
   unHighlightStar() {
     this.setState({
       highlightValue: -Infinity,
+      clickValue: -Infinity,
     });
+  }
+
+  changeRating(rating) {
+    this.setState({
+      clickValue: rating,
+    });
+    this.props.changeRating(rating);
   }
 
   render() {
@@ -34,16 +49,21 @@ class StarRatings extends React.Component {
 
     const isInteger = Number.isInteger(rating);
 
+    const clickValue = this.state.clickValue;
     const highlightValue = this.state.highlightValue;
     let anyStarHighlighted = false;
     var fillId = `starGrad${Math.random().toFixed(15).slice(2)}`
     let starsArray = numOfStarsArray.map((level, i) => {
+      let isClicked = false;
       let isStarred = false;
       let isHighlighted = false;
       let isIntegerStar = true;
       let currentHighlightedStar = false;
       if (level <= rating) {
         isStarred = true;
+        if (clickValue === highlightValue && clickValue !== -Infinity) {
+          isClicked = true;
+        }
       }
       if (level <= highlightValue) {
         isHighlighted = true;
@@ -64,6 +84,7 @@ class StarRatings extends React.Component {
           fillId={fillId}
           key={level}
           rating={level}
+          isClicked={isClicked}
           isStarred={isStarred}
           isSelectable={this.props.isSelectable}
           isAggregateRating={this.props.isAggregateRating}
@@ -72,10 +93,11 @@ class StarRatings extends React.Component {
           anyStarHighlighted={anyStarHighlighted}
           highlightStar={this.highlightStar}
           unHighlightStar={this.unHighlightStar}
-          changeRating={this.props.changeRating}
+          changeRating={this.changeRating}
           starWidthAndHeight={this.props.starWidthAndHeight}
           starSpacing={this.props.starSpacing}
-          starSelectingHoverColor={this.props.starSelectingHoverColor}
+          starHoverColor={this.props.starHoverColor}
+          starSelectingColor={this.props.starSelectingColor}
           starRatedColor={this.props.starRatedColor}
           starEmptyColor={this.props.starEmptyColor}
           gradientPathName={this.props.gradientPathName}
@@ -165,7 +187,8 @@ StarRatings.propTypes = {
   changeRating: PropTypes.func,
   isSelectable: PropTypes.bool,
   isAggregateRating: PropTypes.bool,
-  starSelectingHoverColor: PropTypes.string,
+  starHoverColor: PropTypes.string,
+  starSelectingColor: PropTypes.string,
   starRatedColor: PropTypes.string,
   starEmptyColor: PropTypes.string,
   starWidthAndHeight: PropTypes.string,
@@ -180,11 +203,12 @@ StarRatings.defaultProps = {
   changeRating: function(){},
   isSelectable: false,
   isAggregateRating: true,
-  starSelectingHoverColor: 'rgb(230, 67, 47)',
-  starRatedColor: 'rgb(109, 122, 130)',
-  starEmptyColor: 'rgb(203, 211, 227)',
-  starWidthAndHeight: '50px',
-  starSpacing: '7px',
+  starHoverColor: '#fa8b00',
+  starSelectingColor: '#ffb115',
+  starRatedColor: '#ffb115',
+  starEmptyColor: '#cccccc',
+  starWidthAndHeight: '25px',
+  starSpacing: '0',
   gradientPathName: '',
   ignoreInlineStyles: false
 };

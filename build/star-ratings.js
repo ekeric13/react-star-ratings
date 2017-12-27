@@ -40,8 +40,10 @@ var StarRatings = function (_React$Component) {
 
     _this.highlightStar = _this.highlightStar.bind(_this);
     _this.unHighlightStar = _this.unHighlightStar.bind(_this);
+    _this.changeRating = _this.changeRating.bind(_this);
     _this.state = {
-      highlightValue: -Infinity
+      highlightValue: -Infinity,
+      clickValue: -Infinity
     };
     return _this;
   }
@@ -52,13 +54,27 @@ var StarRatings = function (_React$Component) {
       this.setState({
         highlightValue: starRating
       });
+      if (this.state.clickValue !== starRating) {
+        this.setState({
+          clickValue: -Infinity
+        });
+      }
     }
   }, {
     key: 'unHighlightStar',
     value: function unHighlightStar() {
       this.setState({
-        highlightValue: -Infinity
+        highlightValue: -Infinity,
+        clickValue: -Infinity
       });
+    }
+  }, {
+    key: 'changeRating',
+    value: function changeRating(rating) {
+      this.setState({
+        clickValue: rating
+      });
+      this.props.changeRating(rating);
     }
   }, {
     key: 'render',
@@ -73,16 +89,21 @@ var StarRatings = function (_React$Component) {
 
       var isInteger = Number.isInteger(rating);
 
+      var clickValue = this.state.clickValue;
       var highlightValue = this.state.highlightValue;
       var anyStarHighlighted = false;
       var fillId = 'starGrad' + Math.random().toFixed(15).slice(2);
       var starsArray = numOfStarsArray.map(function (level, i) {
+        var isClicked = false;
         var isStarred = false;
         var isHighlighted = false;
         var isIntegerStar = true;
         var currentHighlightedStar = false;
         if (level <= rating) {
           isStarred = true;
+          if (clickValue === highlightValue && clickValue !== -Infinity) {
+            isClicked = true;
+          }
         }
         if (level <= highlightValue) {
           isHighlighted = true;
@@ -102,6 +123,7 @@ var StarRatings = function (_React$Component) {
           fillId: fillId,
           key: level,
           rating: level,
+          isClicked: isClicked,
           isStarred: isStarred,
           isSelectable: _this2.props.isSelectable,
           isAggregateRating: _this2.props.isAggregateRating,
@@ -110,10 +132,11 @@ var StarRatings = function (_React$Component) {
           anyStarHighlighted: anyStarHighlighted,
           highlightStar: _this2.highlightStar,
           unHighlightStar: _this2.unHighlightStar,
-          changeRating: _this2.props.changeRating,
+          changeRating: _this2.changeRating,
           starWidthAndHeight: _this2.props.starWidthAndHeight,
           starSpacing: _this2.props.starSpacing,
-          starSelectingHoverColor: _this2.props.starSelectingHoverColor,
+          starHoverColor: _this2.props.starHoverColor,
+          starSelectingColor: _this2.props.starSelectingColor,
           starRatedColor: _this2.props.starRatedColor,
           starEmptyColor: _this2.props.starEmptyColor,
           gradientPathName: _this2.props.gradientPathName,
@@ -211,7 +234,8 @@ StarRatings.propTypes = {
   changeRating: _propTypes2.default.func,
   isSelectable: _propTypes2.default.bool,
   isAggregateRating: _propTypes2.default.bool,
-  starSelectingHoverColor: _propTypes2.default.string,
+  starHoverColor: _propTypes2.default.string,
+  starSelectingColor: _propTypes2.default.string,
   starRatedColor: _propTypes2.default.string,
   starEmptyColor: _propTypes2.default.string,
   starWidthAndHeight: _propTypes2.default.string,
@@ -226,11 +250,12 @@ StarRatings.defaultProps = {
   changeRating: function changeRating() {},
   isSelectable: false,
   isAggregateRating: true,
-  starSelectingHoverColor: 'rgb(230, 67, 47)',
-  starRatedColor: 'rgb(109, 122, 130)',
-  starEmptyColor: 'rgb(203, 211, 227)',
-  starWidthAndHeight: '50px',
-  starSpacing: '7px',
+  starHoverColor: '#fa8b00',
+  starSelectingColor: '#ffb115',
+  starRatedColor: '#ffb115',
+  starEmptyColor: '#cccccc',
+  starWidthAndHeight: '25px',
+  starSpacing: '0',
   gradientPathName: '',
   ignoreInlineStyles: false
 };

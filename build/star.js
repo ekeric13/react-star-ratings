@@ -102,9 +102,13 @@ var Star = function (_React$Component) {
           pathStyle = {
             fill: this.props.starRatedColor
           };
+        } else if (this.props.isClicked) {
+          pathStyle = {
+            fill: this.props.starSelectingColor
+          };
         } else if (this.props.isHighlighted) {
           pathStyle = {
-            fill: this.props.starSelectingHoverColor
+            fill: this.props.starHoverColor
           };
         }
       } else {
@@ -162,14 +166,14 @@ var Star = function (_React$Component) {
         _react2.default.createElement(
           'svg',
           {
-            viewBox: '0 0 51 48',
+            viewBox: '0 0 25 25',
             className: starClasses,
             style: starSvgStyle
           },
           _react2.default.createElement('path', {
             className: 'star',
             style: pathStyle,
-            d: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z'
+            d: 'M12.12.52l2.56,5.72a1,1,0,0,0,.76.55l6.23.67a.94.94,0,0,1,.53,1.63l-4.65,4.2a.93.93,0,0,0-.29.89l1.29,6.14a.93.93,0,0,1-1.38,1L11.73,18.2a.93.93,0,0,0-.94,0L5.36,21.32a.94.94,0,0,1-1.39-1l1.29-6.14A.93.93,0,0,0,5,13.29L.32,9.09A.94.94,0,0,1,.85,7.46l6.24-.67a.94.94,0,0,0,.75-.55L10.41.52A.94.94,0,0,1,12.12.52Z'
           })
         )
       );
