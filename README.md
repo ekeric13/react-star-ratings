@@ -95,3 +95,4 @@ To try out the example in this repo: First clone this repo. And then using [a co
 
 If you want to contribute: Make changes in the src folder. And then run `make build`. And of course test by running `make start`. 
 The `make build` command compiles react and es6 stuff using babel from `src/` into `build/`.
+(`make start` currently broken. instead cd in test folder and run `npm run start`)
