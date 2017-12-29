@@ -83,6 +83,8 @@ class StarRatings extends React.Component {
           firstStar={firstStar}
           lastStar={lastStar}
           currentHighlightedStar={currentHighlightedStar}
+          svgIconPath={this.props.svgIconPath}
+          svgIconViewBox={this.props.svgIconViewBox}
         />
       );
     });
@@ -172,6 +174,8 @@ StarRatings.propTypes = {
   starSpacing: PropTypes.string,
   gradientPathName: PropTypes.string,
   ignoreInlineStyles: PropTypes.bool,
+  svgIconPath: PropTypes.string,
+  svgIconViewBox: PropTypes.string,
 };
 
 StarRatings.defaultProps = {
@@ -186,7 +190,9 @@ StarRatings.defaultProps = {
   starWidthAndHeight: '50px',
   starSpacing: '7px',
   gradientPathName: '',
-  ignoreInlineStyles: false
+  ignoreInlineStyles: false,
+  svgIconPath: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z',
+  svgIconViewBox: '0 0 51 48'
 };
 
 export default StarRatings;

@@ -162,14 +162,14 @@ var Star = function (_React$Component) {
         _react2.default.createElement(
           'svg',
           {
-            viewBox: '0 0 51 48',
+            viewBox: this.props.svgIconViewBox,
             className: starClasses,
             style: starSvgStyle
           },
           _react2.default.createElement('path', {
             className: 'star',
             style: pathStyle,
-            d: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z'
+            d: this.props.svgIconPath
           })
         )
       );

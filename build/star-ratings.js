@@ -120,7 +120,9 @@ var StarRatings = function (_React$Component) {
           ignoreInlineStyles: _this2.props.ignoreInlineStyles,
           firstStar: firstStar,
           lastStar: lastStar,
-          currentHighlightedStar: currentHighlightedStar
+          currentHighlightedStar: currentHighlightedStar,
+          svgIconPath: _this2.props.svgIconPath,
+          svgIconViewBox: _this2.props.svgIconViewBox
         });
       });
 
@@ -217,7 +219,9 @@ StarRatings.propTypes = {
   starWidthAndHeight: _propTypes2.default.string,
   starSpacing: _propTypes2.default.string,
   gradientPathName: _propTypes2.default.string,
-  ignoreInlineStyles: _propTypes2.default.bool
+  ignoreInlineStyles: _propTypes2.default.bool,
+  svgIconPath: _propTypes2.default.string,
+  svgIconViewBox: _propTypes2.default.string
 };
 
 StarRatings.defaultProps = {
@@ -232,7 +236,9 @@ StarRatings.defaultProps = {
   starWidthAndHeight: '50px',
   starSpacing: '7px',
   gradientPathName: '',
-  ignoreInlineStyles: false
+  ignoreInlineStyles: false,
+  svgIconPath: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z',
+  svgIconViewBox: '0 0 51 48'
 };
 
 exports.default = StarRatings;
