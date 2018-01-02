@@ -75,6 +75,8 @@ class Bar extends Component {
 | starSpacing | string | '7px' | The spacing between the stars | `0` |
 | gradientPathName | string | '' | gradientPathname needed if app's path is not at the root | `/app/` |
 | ignoreInlineStyles | boolean | false | ignore all the inline styles and write your own css using the provided classes | `true` | 
+| svgIconPath | string | 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z' | Set a path that describes the svg shape | 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z' |
+| svgIconViewBox | string | '0 0 51 48' | Set the view box for a custom svg path you might have | '0 0 51 48' |
 
 
 ## Browser Support
