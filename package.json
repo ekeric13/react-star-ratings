@@ -1,6 +1,6 @@
 {
   "name": "react-star-ratings",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "build/index.js",
   "scripts": {

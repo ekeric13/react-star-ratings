@@ -14,6 +14,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -28,155 +32,158 @@ var Star = function (_React$Component) {
   function Star() {
     _classCallCheck(this, Star);
 
-    var _this = _possibleConstructorReturn(this, (Star.__proto__ || Object.getPrototypeOf(Star)).call(this));
-
-    _this.highlightStar = _this.highlightStar.bind(_this);
-    _this.unHighlightStar = _this.unHighlightStar.bind(_this);
-    _this.changeRating = _this.changeRating.bind(_this);
-    return _this;
+    return _possibleConstructorReturn(this, (Star.__proto__ || Object.getPrototypeOf(Star)).apply(this, arguments));
   }
 
   _createClass(Star, [{
-    key: 'highlightStar',
-    value: function highlightStar() {
-      this.props.highlightStar(this.props.rating);
-    }
-  }, {
-    key: 'unHighlightStar',
-    value: function unHighlightStar() {
-      this.props.unHighlightStar();
-    }
-  }, {
-    key: 'changeRating',
-    value: function changeRating() {
-      this.props.changeRating(this.props.rating);
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var starClasses = void 0;
-      var highlightStar = null;
-      var unHighlightStar = null;
-      var changeRating = null;
-
-      var starContainerStyle = {
-        position: 'relative',
-        display: 'inline-block',
-        verticalAlign: 'top'
-      };
-
-      if (this.props.isSelectable) {
-        starContainerStyle.cursor = 'pointer';
-      }
-
-      if (this.props.firstStar) {
-        starContainerStyle.paddingRight = this.props.starSpacing;
-      } else if (this.props.lastStar) {
-        starContainerStyle.paddingLeft = this.props.starSpacing;
-      } else {
-        starContainerStyle.paddingLeft = this.props.starSpacing;
-        starContainerStyle.paddingRight = this.props.starSpacing;
-      }
-
-      var starSvgStyle = {
-        width: this.props.starWidthAndHeight,
-        height: this.props.starWidthAndHeight,
-        transition: 'transform .2s ease-in-out'
-      };
-
-      var pathStyle = {
-        fill: this.props.starEmptyColor
-      };
-      if (this.props.isSelectable) {
-        highlightStar = this.highlightStar;
-        unHighlightStar = this.unHighlightStar;
-        changeRating = this.changeRating;
-        starClasses = (0, _classnames2.default)({
-          'star-svg': true,
-          'star-level': this.props.isStarred && !this.props.anyStarHighlighted,
-          'star-selected': this.props.isHighlighted,
-          'star-hovered-over': this.props.currentHighlightedStar
-        });
-
-        if (this.props.isStarred && !this.props.anyStarHighlighted) {
-          pathStyle = {
-            fill: this.props.starRatedColor
-          };
-        } else if (this.props.isHighlighted) {
-          pathStyle = {
-            fill: this.props.starSelectingHoverColor
-          };
-        }
-      } else {
-        if (this.props.isAggregateRating) {
-          starClasses = (0, _classnames2.default)({
-            'star-svg': true,
-            'star-level': this.props.isStarred,
-            'star-multi-level': !this.props.isInteger
-          });
-
-          if (this.props.isStarred && !this.props.isInteger) {
-            pathStyle = {
-              'fill': 'url(\'' + this.props.gradientPathName + '#' + this.props.fillId + '\')'
-            };
-          } else if (this.props.isStarred) {
-            pathStyle = {
-              'fill': this.props.starRatedColor
-            };
-          }
-        } else {
-          starClasses = (0, _classnames2.default)({
-            'star-svg': true,
-            'star-level': this.props.isStarred
-          });
-
-          if (this.props.isStarred) {
-            pathStyle = {
-              'fill': this.props.starRatedColor
-            };
-          }
-        }
-      }
-
-      if (this.props.currentHighlightedStar) {
-        starSvgStyle.transform = 'scale(1.1)';
-      }
-
-      pathStyle.transition = 'fill .2s ease-in-out';
-
-      if (this.props.ignoreInlineStyles) {
-        starContainerStyle = {};
-        starSvgStyle = {};
-        pathStyle = {};
-      }
+      var _props = this.props,
+          changeRating = _props.changeRating,
+          hoverOverStar = _props.hoverOverStar,
+          unHoverOverStar = _props.unHoverOverStar,
+          svgIconViewBox = _props.svgIconViewBox,
+          svgIconPath = _props.svgIconPath;
 
       return _react2.default.createElement(
         'div',
         {
           className: 'star-container',
-          style: starContainerStyle,
-          onMouseEnter: highlightStar,
-          onMouseLeave: unHighlightStar,
+          style: this.starContainerStyle,
+          onMouseEnter: hoverOverStar,
+          onMouseLeave: unHoverOverStar,
           onClick: changeRating
         },
         _react2.default.createElement(
           'svg',
           {
-            viewBox: this.props.svgIconViewBox,
-            className: starClasses,
-            style: starSvgStyle
+            viewBox: svgIconViewBox,
+            className: this.starClasses,
+            style: this.starSvgStyle
           },
           _react2.default.createElement('path', {
             className: 'star',
-            style: pathStyle,
-            d: this.props.svgIconPath
+            style: this.pathStyle,
+            d: svgIconPath
           })
         )
       );
+    }
+  }, {
+    key: 'starContainerStyle',
+    get: function get() {
+      var _props2 = this.props,
+          changeRating = _props2.changeRating,
+          starSpacing = _props2.starSpacing,
+          isFirstStar = _props2.isFirstStar,
+          isLastStar = _props2.isLastStar,
+          ignoreInlineStyles = _props2.ignoreInlineStyles;
+
+
+      var starContainerStyle = {
+        position: 'relative',
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        paddingLeft: isFirstStar ? undefined : starSpacing,
+        paddingRight: isLastStar ? undefined : starSpacing,
+        cursor: changeRating ? 'pointer' : undefined
+      };
+      return ignoreInlineStyles ? {} : starContainerStyle;
+    }
+  }, {
+    key: 'starSvgStyle',
+    get: function get() {
+      var _props3 = this.props,
+          ignoreInlineStyles = _props3.ignoreInlineStyles,
+          isCurrentHoveredStar = _props3.isCurrentHoveredStar,
+          starDimension = _props3.starDimension;
+
+      var starSvgStyle = {
+        width: starDimension,
+        height: starDimension,
+        transition: 'transform .2s ease-in-out',
+        transform: isCurrentHoveredStar ? 'scale(1.1)' : undefined
+      };
+
+      return ignoreInlineStyles ? {} : starSvgStyle;
+    }
+  }, {
+    key: 'pathStyle',
+    get: function get() {
+      var _props4 = this.props,
+          isStarred = _props4.isStarred,
+          isPartiallyFullStar = _props4.isPartiallyFullStar,
+          isHovered = _props4.isHovered,
+          hoverMode = _props4.hoverMode,
+          starEmptyColor = _props4.starEmptyColor,
+          starRatedColor = _props4.starRatedColor,
+          starHoverColor = _props4.starHoverColor,
+          gradientPathName = _props4.gradientPathName,
+          fillId = _props4.fillId,
+          ignoreInlineStyles = _props4.ignoreInlineStyles;
+
+
+      var fill = void 0;
+      if (hoverMode) {
+        if (isHovered) fill = starHoverColor;else fill = starEmptyColor;
+      } else {
+        if (isPartiallyFullStar) fill = 'url(\'' + gradientPathName + '#' + fillId + '\')';else if (isStarred) fill = starRatedColor;else fill = starEmptyColor;
+      }
+
+      var pathStyle = {
+        fill: fill,
+        transition: 'fill .2s ease-in-out'
+      };
+
+      return ignoreInlineStyles ? {} : pathStyle;
+    }
+  }, {
+    key: 'starClasses',
+    get: function get() {
+      var _props5 = this.props,
+          isSelected = _props5.isSelected,
+          isPartiallyFullStar = _props5.isPartiallyFullStar,
+          isHovered = _props5.isHovered,
+          isCurrentHoveredStar = _props5.isCurrentHoveredStar,
+          ignoreInlineStyles = _props5.ignoreInlineStyles;
+
+
+      var starClasses = (0, _classnames2.default)({
+        'widget-svg': true,
+        'widget-selected': isSelected,
+        'multi-widget-selected': isPartiallyFullStar,
+        'hovered': isHovered,
+        'current-hovered': isCurrentHoveredStar
+      });
+
+      return ignoreInlineStyles ? {} : starClasses;
     }
   }]);
 
   return Star;
 }(_react2.default.Component);
+
+Star.propTypes = {
+  fillId: _propTypes2.default.string.isRequired,
+  changeRating: _propTypes2.default.func,
+  hoverOverStar: _propTypes2.default.func,
+  unHoverOverStar: _propTypes2.default.func,
+  isStarred: _propTypes2.default.bool.isRequired,
+  isPartiallyFullStar: _propTypes2.default.bool.isRequired,
+  isHovered: _propTypes2.default.bool.isRequired,
+  hoverMode: _propTypes2.default.bool.isRequired,
+  isCurrentHoveredStar: _propTypes2.default.bool.isRequired,
+  isFirstStar: _propTypes2.default.bool.isRequired,
+  isLastStar: _propTypes2.default.bool.isRequired,
+  starDimension: _propTypes2.default.string.isRequired,
+  starSpacing: _propTypes2.default.string.isRequired,
+  starHoverColor: _propTypes2.default.string.isRequired,
+  starRatedColor: _propTypes2.default.string.isRequired,
+  starEmptyColor: _propTypes2.default.string.isRequired,
+  gradientPathName: _propTypes2.default.string.isRequired,
+  ignoreInlineStyles: _propTypes2.default.bool.isRequired,
+  svgIconPath: _propTypes2.default.string.isRequired,
+  svgIconViewBox: _propTypes2.default.string.isRequired
+};
 
 exports.default = Star;

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 class Star extends React.Component {
-
+  
   get starContainerStyle() {
     const {
       changeRating,

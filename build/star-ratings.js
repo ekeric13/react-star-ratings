@@ -10,10 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _classnames = require('classnames');
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
 var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
@@ -34,173 +30,196 @@ var StarRatings = function (_React$Component) {
   _inherits(StarRatings, _React$Component);
 
   function StarRatings() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, StarRatings);
 
-    var _this = _possibleConstructorReturn(this, (StarRatings.__proto__ || Object.getPrototypeOf(StarRatings)).call(this));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.highlightStar = _this.highlightStar.bind(_this);
-    _this.unHighlightStar = _this.unHighlightStar.bind(_this);
-    _this.state = {
-      highlightValue: -Infinity
-    };
-    return _this;
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StarRatings.__proto__ || Object.getPrototypeOf(StarRatings)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      highestStarHovered: -Infinity
+    }, _this.fillId = 'starGrad' + Math.random().toFixed(15).slice(2), _this.hoverOverStar = function (starRating) {
+      return function () {
+        _this.setState({
+          highestStarHovered: starRating
+        });
+      };
+    }, _this.unHoverOverStar = function () {
+      _this.setState({
+        highestStarHovered: -Infinity
+      });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(StarRatings, [{
-    key: 'highlightStar',
-    value: function highlightStar(starRating) {
-      this.setState({
-        highlightValue: starRating
-      });
-    }
-  }, {
-    key: 'unHighlightStar',
-    value: function unHighlightStar() {
-      this.setState({
-        highlightValue: -Infinity
-      });
+    key: 'stopColorStyle',
+    value: function stopColorStyle(color) {
+      var stopColorStyle = {
+        stopColor: color,
+        stopOpacity: '1'
+      };
+      return this.props.ignoreInlineStyles ? {} : stopColorStyle;
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _props = this.props,
+          starRatedColor = _props.starRatedColor,
+          starEmptyColor = _props.starEmptyColor;
 
-      var rating = this.props.rating || 0;
-      var numOfStars = this.props.numOfStars;
-      var numOfStarsArray = Array(numOfStars).fill().map(function (_, i) {
-        return i + 1;
-      });
-
-      var isInteger = Number.isInteger(rating);
-
-      var highlightValue = this.state.highlightValue;
-      var anyStarHighlighted = false;
-      var fillId = 'starGrad' + Math.random().toFixed(15).slice(2);
-      var starsArray = numOfStarsArray.map(function (level, i) {
-        var isStarred = false;
-        var isHighlighted = false;
-        var isIntegerStar = true;
-        var currentHighlightedStar = false;
-        if (level <= rating) {
-          isStarred = true;
-        }
-        if (level <= highlightValue) {
-          isHighlighted = true;
-          anyStarHighlighted = true;
-          currentHighlightedStar = level === highlightValue;
-        }
-        if (!isInteger) {
-          if (level > rating && level - 1 < rating) {
-            isIntegerStar = false;
-            isStarred = true;
-          }
-        }
-
-        var firstStar = i === 0;
-        var lastStar = numOfStarsArray.length - 1 === i;
-        return _react2.default.createElement(_star2.default, {
-          fillId: fillId,
-          key: level,
-          rating: level,
-          isStarred: isStarred,
-          isSelectable: _this2.props.isSelectable,
-          isAggregateRating: _this2.props.isAggregateRating,
-          isInteger: isIntegerStar,
-          isHighlighted: isHighlighted,
-          anyStarHighlighted: anyStarHighlighted,
-          highlightStar: _this2.highlightStar,
-          unHighlightStar: _this2.unHighlightStar,
-          changeRating: _this2.props.changeRating,
-          starWidthAndHeight: _this2.props.starWidthAndHeight,
-          starSpacing: _this2.props.starSpacing,
-          starSelectingHoverColor: _this2.props.starSelectingHoverColor,
-          starRatedColor: _this2.props.starRatedColor,
-          starEmptyColor: _this2.props.starEmptyColor,
-          gradientPathName: _this2.props.gradientPathName,
-          ignoreInlineStyles: _this2.props.ignoreInlineStyles,
-          firstStar: firstStar,
-          lastStar: lastStar,
-          currentHighlightedStar: currentHighlightedStar,
-          svgIconPath: _this2.props.svgIconPath,
-          svgIconViewBox: _this2.props.svgIconViewBox
-        });
-      });
-
-      var offsetValue = '0%';
-      if (!isInteger) {
-        var firstTwoDecimals = rating.toFixed(2).split('.')[1].slice(0, 2);
-        offsetValue = firstTwoDecimals + '%';
-      }
-
-      var stopColorFirstStyle = {
-        stopColor: this.props.starRatedColor,
-        stopOpacity: '1'
-      };
-      var stopColorFinalStyle = {
-        stopColor: this.props.starEmptyColor,
-        stopOpacity: '1'
-      };
-
-      var titleText = void 0;
-      if (this.props.isAggregateRating) {
-        // fix it at 2 decimal places and remove trailing 0s
-        var formattedRating = parseFloat(rating.toFixed(2)).toString();
-        if (Number.isInteger(rating)) {
-          formattedRating = String(rating);
-        }
-        var starText = 'Stars';
-        if (formattedRating === '1') {
-          starText = 'Star';
-        }
-        titleText = formattedRating + ' ' + starText;
-      }
-
-      var starRatingsStyle = {
-        position: 'relative',
-        boxSizing: 'border-box',
-        display: 'inline-block'
-      };
-      var starGradientStyle = {
-        position: 'absolute',
-        zIndex: '0',
-        width: '10px',
-        height: '10px'
-      };
-      if (this.props.ignoreInlineStyles) {
-        starRatingsStyle = {};
-        starGradientStyle = {};
-        stopColorFirstStyle = {};
-        stopColorFinalStyle = {};
-      }
 
       return _react2.default.createElement(
         'div',
         {
           className: 'star-ratings',
-          title: titleText,
-          style: starRatingsStyle
+          title: this.titleText,
+          style: this.starRatingsStyle
         },
         _react2.default.createElement(
           'svg',
           {
             className: 'star-grad',
-            style: starGradientStyle
+            style: this.starGradientStyle
           },
           _react2.default.createElement(
             'defs',
             null,
             _react2.default.createElement(
               'linearGradient',
-              { id: fillId, x1: '0%', y1: '0%', x2: '100%', y2: '0%' },
-              _react2.default.createElement('stop', { offset: '0%', className: 'stop-color-first', style: stopColorFirstStyle }),
-              _react2.default.createElement('stop', { offset: offsetValue, className: 'stop-color-first', style: stopColorFirstStyle }),
-              _react2.default.createElement('stop', { offset: offsetValue, className: 'stop-color-final', style: stopColorFinalStyle }),
-              _react2.default.createElement('stop', { offset: '100%', className: 'stop-color-final', style: stopColorFinalStyle })
+              { id: this.fillId, x1: '0%', y1: '0%', x2: '100%', y2: '0%' },
+              _react2.default.createElement('stop', { offset: '0%', className: 'stop-color-first', style: this.stopColorStyle(starRatedColor) }),
+              _react2.default.createElement('stop', { offset: this.offsetValue, className: 'stop-color-first', style: this.stopColorStyle(starRatedColor) }),
+              _react2.default.createElement('stop', { offset: this.offsetValue, className: 'stop-color-final', style: this.stopColorStyle(starEmptyColor) }),
+              _react2.default.createElement('stop', { offset: '100%', className: 'stop-color-final', style: this.stopColorStyle(starEmptyColor) })
             )
           )
         ),
-        starsArray
+        this.renderStars
       );
+    }
+  }, {
+    key: 'starRatingsStyle',
+    get: function get() {
+      var starRatingsStyle = {
+        position: 'relative',
+        boxSizing: 'border-box',
+        display: 'inline-block'
+      };
+      return this.props.ignoreInlineStyles ? {} : starRatingsStyle;
+    }
+  }, {
+    key: 'starGradientStyle',
+    get: function get() {
+      var starGradientStyle = {
+        position: 'absolute',
+        zIndex: '0',
+        width: '0',
+        height: '0',
+        visibility: 'hidden'
+      };
+      return this.props.ignoreInlineStyles ? {} : starGradientStyle;
+    }
+  }, {
+    key: 'titleText',
+    get: function get() {
+      var _props2 = this.props,
+          typeOfWidget = _props2.typeOfWidget,
+          selectedRating = _props2.rating;
+
+      var hoveredRating = this.state.highestStarHovered;
+      var currentRating = hoveredRating > 0 ? hoveredRating : selectedRating;
+      // fix it at 2 decimal places and remove trailing 0s
+      var formattedRating = parseFloat(currentRating.toFixed(2)).toString();
+      if (Number.isInteger(currentRating)) {
+        formattedRating = String(currentRating);
+      }
+      var starText = typeOfWidget + 's';
+      if (formattedRating === '1') {
+        starText = typeOfWidget;
+      }
+      return formattedRating + ' ' + starText;
+    }
+  }, {
+    key: 'offsetValue',
+    get: function get() {
+      var rating = this.props.rating;
+      var ratingIsInteger = Number.isInteger(rating);
+      var offsetValue = '0%';
+      if (!ratingIsInteger) {
+        var firstTwoDecimals = rating.toFixed(2).split('.')[1].slice(0, 2);
+        offsetValue = firstTwoDecimals + '%';
+      }
+      return offsetValue;
+    }
+  }, {
+    key: 'renderStars',
+    get: function get() {
+      var _this2 = this;
+
+      var _props3 = this.props,
+          changeRating = _props3.changeRating,
+          selectedRating = _props3.rating,
+          numberOfStars = _props3.numberOfStars,
+          starDimension = _props3.starDimension,
+          starSpacing = _props3.starSpacing,
+          starRatedColor = _props3.starRatedColor,
+          starEmptyColor = _props3.starEmptyColor,
+          starHoverColor = _props3.starHoverColor,
+          gradientPathName = _props3.gradientPathName,
+          ignoreInlineStyles = _props3.ignoreInlineStyles,
+          svgIconPath = _props3.svgIconPath,
+          svgIconViewBox = _props3.svgIconViewBox;
+      var highestStarHovered = this.state.highestStarHovered;
+
+
+      var numberOfStarsArray = Array(numberOfStars).fill();
+
+      return numberOfStarsArray.map(function (_, index) {
+        var starRating = index + 1;
+        var isStarred = starRating <= selectedRating;
+
+        // hovered only matters when changeRating is true
+        var hoverMode = highestStarHovered > 0;
+        var isHovered = starRating <= highestStarHovered;
+        var isCurrentHoveredStar = starRating === highestStarHovered;
+
+        // only matters when changeRating is false
+        // given star 5 and rating 4.2:  5 > 4.2 && 4 < 4.2;
+        var isPartiallyFullStar = starRating > selectedRating && starRating - 1 < selectedRating;
+
+        var isFirstStar = starRating === 1;
+        var isLastStar = starRating === numberOfStars;
+
+        return _react2.default.createElement(_star2.default, {
+          key: starRating,
+          fillId: _this2.fillId,
+          changeRating: changeRating ? function () {
+            return changeRating(starRating);
+          } : null,
+          hoverOverStar: changeRating ? _this2.hoverOverStar(starRating) : null,
+          unHoverOverStar: changeRating ? _this2.unHoverOverStar : null,
+          isStarred: isStarred,
+          isPartiallyFullStar: isPartiallyFullStar,
+          isHovered: isHovered,
+          hoverMode: hoverMode,
+          isCurrentHoveredStar: isCurrentHoveredStar,
+          isFirstStar: isFirstStar,
+          isLastStar: isLastStar,
+          starDimension: starDimension,
+          starSpacing: starSpacing,
+          starHoverColor: starHoverColor,
+          starRatedColor: starRatedColor,
+          starEmptyColor: starEmptyColor,
+          gradientPathName: gradientPathName,
+          ignoreInlineStyles: ignoreInlineStyles,
+          svgIconPath: svgIconPath,
+          svgIconViewBox: svgIconViewBox
+        });
+      });
     }
   }]);
 
@@ -208,32 +227,29 @@ var StarRatings = function (_React$Component) {
 }(_react2.default.Component);
 
 StarRatings.propTypes = {
-  rating: _propTypes2.default.number,
-  numOfStars: _propTypes2.default.number,
+  rating: _propTypes2.default.number.isRequired,
+  numberOfStars: _propTypes2.default.number.isRequired,
   changeRating: _propTypes2.default.func,
-  isSelectable: _propTypes2.default.bool,
-  isAggregateRating: _propTypes2.default.bool,
-  starSelectingHoverColor: _propTypes2.default.string,
-  starRatedColor: _propTypes2.default.string,
-  starEmptyColor: _propTypes2.default.string,
-  starWidthAndHeight: _propTypes2.default.string,
-  starSpacing: _propTypes2.default.string,
-  gradientPathName: _propTypes2.default.string,
-  ignoreInlineStyles: _propTypes2.default.bool,
-  svgIconPath: _propTypes2.default.string,
-  svgIconViewBox: _propTypes2.default.string
+  starHoverColor: _propTypes2.default.string.isRequired,
+  starRatedColor: _propTypes2.default.string.isRequired,
+  starEmptyColor: _propTypes2.default.string.isRequired,
+  starDimension: _propTypes2.default.string.isRequired,
+  starSpacing: _propTypes2.default.string.isRequired,
+  gradientPathName: _propTypes2.default.string.isRequired,
+  ignoreInlineStyles: _propTypes2.default.bool.isRequired,
+  svgIconPath: _propTypes2.default.string.isRequired,
+  svgIconViewBox: _propTypes2.default.string.isRequired
 };
 
 StarRatings.defaultProps = {
   rating: 0,
-  numOfStars: 5,
-  changeRating: function changeRating() {},
-  isSelectable: false,
-  isAggregateRating: true,
-  starSelectingHoverColor: 'rgb(230, 67, 47)',
+  typeOfWidget: 'Star',
+  numberOfStars: 5,
+  changeRating: null,
+  starHoverColor: 'rgb(230, 67, 47)',
   starRatedColor: 'rgb(109, 122, 130)',
   starEmptyColor: 'rgb(203, 211, 227)',
-  starWidthAndHeight: '50px',
+  starDimension: '50px',
   starSpacing: '7px',
   gradientPathName: '',
   ignoreInlineStyles: false,
