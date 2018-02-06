@@ -99,7 +99,7 @@ class StarRatings extends React.Component {
     } = this.props;
     const { highestStarHovered } = this.state;
 
-    const numberOfStarsArray = Array(numberOfStars).fill();
+    const numberOfStarsArray = Array.apply(null, Array(numberOfStars));
 
     return numberOfStarsArray.map((_, index) => {
       const starRating = index + 1;
