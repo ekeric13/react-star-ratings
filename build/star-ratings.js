@@ -176,7 +176,7 @@ var StarRatings = function (_React$Component) {
       var highestStarHovered = this.state.highestStarHovered;
 
 
-      var numberOfStarsArray = Array(numberOfStars).fill();
+      var numberOfStarsArray = Array.apply(null, Array(numberOfStars));
 
       return numberOfStarsArray.map(function (_, index) {
         var starRating = index + 1;
