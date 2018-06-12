@@ -172,7 +172,8 @@ var StarRatings = function (_React$Component) {
           gradientPathName = _props3.gradientPathName,
           ignoreInlineStyles = _props3.ignoreInlineStyles,
           svgIconPath = _props3.svgIconPath,
-          svgIconViewBox = _props3.svgIconViewBox;
+          svgIconViewBox = _props3.svgIconViewBox,
+          name = _props3.name;
       var highestStarHovered = this.state.highestStarHovered;
 
 
@@ -198,7 +199,7 @@ var StarRatings = function (_React$Component) {
           key: starRating,
           fillId: _this2.fillId,
           changeRating: changeRating ? function () {
-            return changeRating(starRating);
+            return changeRating(starRating, name);
           } : null,
           hoverOverStar: changeRating ? _this2.hoverOverStar(starRating) : null,
           unHoverOverStar: changeRating ? _this2.unHoverOverStar : null,
@@ -238,7 +239,8 @@ StarRatings.propTypes = {
   gradientPathName: _propTypes2.default.string.isRequired,
   ignoreInlineStyles: _propTypes2.default.bool.isRequired,
   svgIconPath: _propTypes2.default.string.isRequired,
-  svgIconViewBox: _propTypes2.default.string.isRequired
+  svgIconViewBox: _propTypes2.default.string.isRequired,
+  name: _propTypes2.default.string
 };
 
 StarRatings.defaultProps = {

@@ -15,7 +15,7 @@ class App extends Component {
     };
   }
 
-  changeRating(rating) {
+  changeRating(rating, name) {
     this.setState({
       rating: rating
     })
@@ -30,6 +30,7 @@ class App extends Component {
             starRatedColor="blue"
             changeRating={this.changeRating}
             numberOfStars={6}
+            name="rating"
           />
         </div>
         <div>

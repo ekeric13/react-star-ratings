@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Star from './star';
 
 class StarRatings extends React.Component {
@@ -95,10 +94,11 @@ class StarRatings extends React.Component {
       gradientPathName,
       ignoreInlineStyles,
       svgIconPath,
-      svgIconViewBox
+      svgIconViewBox,
+      name
     } = this.props;
     const { highestStarHovered } = this.state;
-
+        
     const numberOfStarsArray = Array.apply(null, Array(numberOfStars));
 
     return numberOfStarsArray.map((_, index) => {
@@ -121,7 +121,7 @@ class StarRatings extends React.Component {
         <Star
           key={starRating}
           fillId={this.fillId}
-          changeRating={changeRating ? () => changeRating(starRating) : null}
+          changeRating={changeRating ? () => changeRating(starRating, name) : null}
           hoverOverStar={changeRating ? this.hoverOverStar(starRating) : null}
           unHoverOverStar={changeRating ? this.unHoverOverStar : null}
           isStarred={isStarred}
@@ -189,6 +189,7 @@ StarRatings.propTypes = {
   ignoreInlineStyles: PropTypes.bool.isRequired,
   svgIconPath: PropTypes.string.isRequired,
   svgIconViewBox: PropTypes.string.isRequired,
+  name: PropTypes.string
 };
 
 StarRatings.defaultProps = {
