@@ -29,7 +29,7 @@ It is a lot more extendable and customizable.
 import StarRatings from './react-star-ratings';
 
 class Foo extends Component {
-    changeRating( newRating ) {
+    changeRating( newRating, name ) {
       this.setState({
         rating: newRating
       });
@@ -43,6 +43,7 @@ class Foo extends Component {
           starRatedColor="blue"
           changeRating={this.changeRating}
           numberOfStars={6}
+          name='rating'
         />
       );
     }
@@ -79,6 +80,7 @@ class Bar extends Component {
 | ignoreInlineStyles | boolean | false | ignore all the inline styles and write your own css using the provided classes | `true` | 
 | svgIconPath | string | 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z' | Set a path that describes the svg shape | 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z' |
 | svgIconViewBox | string | '0 0 51 48' | Set the view box for a custom svg path you might have | '0 0 51 48' |
+| name | string | '' | Component's unique identification. Can be used when more than one star rating components are used | 'rating' |
 
 ## API v1
 
