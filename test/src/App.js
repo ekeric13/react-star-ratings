@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-// import StarRatings from 'react-star-ratings';
-import StarRatings from './star-ratings';
+import StarRatings from 'react-star-ratings';
+// import StarRatings from './star-ratings';
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   changeRating(rating, name) {
+    console.log('these two', rating, name);
     this.setState({
       rating: rating
     })

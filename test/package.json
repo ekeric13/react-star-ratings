@@ -6,7 +6,7 @@
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
     "react-scripts": "1.0.17",
-    "react-star-ratings": "2.1.0"
+    "react-star-ratings": "2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
