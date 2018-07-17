@@ -41,7 +41,7 @@ var StarRatings = function (_React$Component) {
     }
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StarRatings.__proto__ || Object.getPrototypeOf(StarRatings)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      highestStarHovered: -Infinity
+      highestStarHovered: 0
     }, _this.fillId = 'starGrad' + Math.random().toFixed(15).slice(2), _this.hoverOverStar = function (starRating) {
       return function () {
         _this.setState({
@@ -162,6 +162,7 @@ var StarRatings = function (_React$Component) {
 
       var _props3 = this.props,
           changeRating = _props3.changeRating,
+          onHover = _props3.onHover,
           selectedRating = _props3.rating,
           numberOfStars = _props3.numberOfStars,
           starDimension = _props3.starDimension,
@@ -203,6 +204,9 @@ var StarRatings = function (_React$Component) {
           } : null,
           hoverOverStar: changeRating ? _this2.hoverOverStar(starRating) : null,
           unHoverOverStar: changeRating ? _this2.unHoverOverStar : null,
+          onHover: highestStarHovered ? function () {
+            return onHover(highestStarHovered);
+          } : null,
           isStarred: isStarred,
           isPartiallyFullStar: isPartiallyFullStar,
           isHovered: isHovered,
@@ -231,6 +235,7 @@ StarRatings.propTypes = {
   rating: _propTypes2.default.number.isRequired,
   numberOfStars: _propTypes2.default.number.isRequired,
   changeRating: _propTypes2.default.func,
+  onHover: _propTypes2.default.func,
   starHoverColor: _propTypes2.default.string.isRequired,
   starRatedColor: _propTypes2.default.string.isRequired,
   starEmptyColor: _propTypes2.default.string.isRequired,
@@ -248,6 +253,7 @@ StarRatings.defaultProps = {
   typeOfWidget: 'Star',
   numberOfStars: 5,
   changeRating: null,
+  onHover: null,
   starHoverColor: 'rgb(230, 67, 47)',
   starRatedColor: 'rgb(109, 122, 130)',
   starEmptyColor: 'rgb(203, 211, 227)',

@@ -15,8 +15,12 @@ class App extends Component {
   changeRating(rating) {
     this.setState({
       rating: rating
-    })
-  }
+		})
+	}
+	
+	onHover(rating) {
+		console.warn(rating);
+	}
 
   render() {
     return (
@@ -27,7 +31,8 @@ class App extends Component {
             isSelectable={true}
             starRatedColor={'blue'}
             isAggregateRating={false}
-            changeRating={this.changeRating}
+						changeRating={this.changeRating}
+						onHover={this.onHover}
             numOfStars={6}
           />
         </div>
