@@ -40,6 +40,7 @@ var Star = function (_React$Component) {
     value: function render() {
       var _props = this.props,
           changeRating = _props.changeRating,
+          onHover = _props.onHover,
           hoverOverStar = _props.hoverOverStar,
           unHoverOverStar = _props.unHoverOverStar,
           svgIconViewBox = _props.svgIconViewBox,
@@ -52,7 +53,8 @@ var Star = function (_React$Component) {
           style: this.starContainerStyle,
           onMouseEnter: hoverOverStar,
           onMouseLeave: unHoverOverStar,
-          onClick: changeRating
+          onClick: changeRating,
+          onMouseOut: onHover
         },
         _react2.default.createElement(
           'svg',

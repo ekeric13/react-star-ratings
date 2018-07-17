@@ -94,7 +94,8 @@ class Star extends React.Component {
 
   render() {
     const {
-      changeRating,
+			changeRating,
+			onHover,
       hoverOverStar,
       unHoverOverStar,
       svgIconViewBox,
@@ -106,7 +107,8 @@ class Star extends React.Component {
         style={this.starContainerStyle}
         onMouseEnter={hoverOverStar}
         onMouseLeave={unHoverOverStar}
-        onClick={changeRating}
+				onClick={changeRating}
+				onMouseOut={onHover}
       >
         <svg
           viewBox={svgIconViewBox}

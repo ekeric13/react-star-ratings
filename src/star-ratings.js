@@ -4,7 +4,7 @@ import Star from './star';
 
 class StarRatings extends React.Component {
   state = {
-    highestStarHovered: -Infinity
+    highestStarHovered: 0
   }
   fillId = `starGrad${Math.random().toFixed(15).slice(2)}`;
 
@@ -83,7 +83,8 @@ class StarRatings extends React.Component {
 
   get renderStars() {
     const {
-      changeRating,
+			changeRating,
+			onHover,
       rating: selectedRating,
       numberOfStars,
       starDimension,
@@ -121,9 +122,10 @@ class StarRatings extends React.Component {
         <Star
           key={starRating}
           fillId={this.fillId}
-          changeRating={changeRating ? () => changeRating(starRating, name) : null}
+					changeRating={changeRating ? () => changeRating(starRating, name) : null}
           hoverOverStar={changeRating ? this.hoverOverStar(starRating) : null}
-          unHoverOverStar={changeRating ? this.unHoverOverStar : null}
+					unHoverOverStar={changeRating ? this.unHoverOverStar : null}
+					onHover={highestStarHovered ? () => onHover(highestStarHovered) : null}
           isStarred={isStarred}
           isPartiallyFullStar={isPartiallyFullStar}
           isHovered={isHovered}
@@ -179,7 +181,8 @@ class StarRatings extends React.Component {
 StarRatings.propTypes = {
   rating: PropTypes.number.isRequired,
   numberOfStars: PropTypes.number.isRequired,
-  changeRating: PropTypes.func,
+	changeRating: PropTypes.func,
+	onHover: PropTypes.func,
   starHoverColor: PropTypes.string.isRequired,
   starRatedColor: PropTypes.string.isRequired,
   starEmptyColor: PropTypes.string.isRequired,
@@ -196,7 +199,8 @@ StarRatings.defaultProps = {
   rating: 0,
   typeOfWidget: 'Star',
   numberOfStars: 5,
-  changeRating: null,
+	changeRating: null,
+	onHover: null,
   starHoverColor: 'rgb(230, 67, 47)',
   starRatedColor: 'rgb(109, 122, 130)',
   starEmptyColor: 'rgb(203, 211, 227)',
