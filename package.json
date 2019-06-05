@@ -17,10 +17,10 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
-    "@babel/preset-env": "^7.1.0"
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.0.0",
     "classnames": "^2.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.1.0"
