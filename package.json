@@ -2,47 +2,25 @@
   "name": "react-star-ratings",
   "version": "2.3.0",
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
-  "main": "build/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "make build"
+    "build": "babel src --out-dir lib --source-maps"
   },
-  "author": "Eric Kennedy <ekeric13@gmail.com> (https://github.com/ekeric13)",
-  "license": "BSD-3-Clause",
-  "keywords": [
-    "react",
-    "component",
-    "star",
-    "stars",
-    "rating",
-    "ratings",
-    "star ratings",
-    "star rating",
-    "rate",
-    "input",
-    "svg",
-    "SVG",
-    "star rating component",
-    "svg icons",
-    "react star rating component"
+  "files": [
+    "LICENSE",
+    "lib/",
+    "src/",
+    "star-ratings.css"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ekeric13/react-star-ratings.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ekeric13/react-star-ratings/issues"
-  },
-  "homepage": "https://github.com/ekeric13/react-star-ratings",
-  "browserify": {
-    "transform": [
-      "babelify"
-    ]
-  },
+  "browserslist": "last 2 versions, Explorer 11",
   "devDependencies": {
-    "react-fatigue-dev": "github:ekeric13/react-fatigue-dev"
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/preset-env": "^7.1.0"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.0.0",
     "classnames": "^2.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.1.0"

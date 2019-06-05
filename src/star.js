@@ -1,9 +1,8 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React from "react";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 
 class Star extends React.Component {
-
   get starContainerStyle() {
     const {
       changeRating,
@@ -14,14 +13,14 @@ class Star extends React.Component {
     } = this.props;
 
     const starContainerStyle = {
-      position: 'relative',
-      display: 'inline-block',
-      verticalAlign: 'middle',
+      position: "relative",
+      display: "inline-block",
+      verticalAlign: "middle",
       paddingLeft: isFirstStar ? undefined : starSpacing,
       paddingRight: isLastStar ? undefined : starSpacing,
-      cursor: changeRating ? 'pointer' : undefined
+      cursor: changeRating ? "pointer" : undefined
     };
-    return ignoreInlineStyles ? {} : starContainerStyle
+    return ignoreInlineStyles ? {} : starContainerStyle;
   }
 
   get starSvgStyle() {
@@ -33,8 +32,8 @@ class Star extends React.Component {
     const starSvgStyle = {
       width: starDimension,
       height: starDimension,
-      transition: 'transform .2s ease-in-out',
-      transform: isCurrentHoveredStar ? 'scale(1.1)' : undefined
+      transition: "transform .2s ease-in-out",
+      transform: isCurrentHoveredStar ? "scale(1.1)" : undefined
     };
 
     return ignoreInlineStyles ? {} : starSvgStyle;
@@ -66,7 +65,7 @@ class Star extends React.Component {
 
     const pathStyle = {
       fill: fill,
-      transition: 'fill .2s ease-in-out',
+      transition: "fill .2s ease-in-out"
     };
 
     return ignoreInlineStyles ? {} : pathStyle;
@@ -82,14 +81,14 @@ class Star extends React.Component {
     } = this.props;
 
     const starClasses = classNames({
-      'widget-svg': true,
-      'widget-selected': isSelected,
-      'multi-widget-selected': isPartiallyFullStar,
-      'hovered': isHovered,
-      'current-hovered': isCurrentHoveredStar
-    })
+      "widget-svg": true,
+      "widget-selected": isSelected,
+      "multi-widget-selected": isPartiallyFullStar,
+      hovered: isHovered,
+      "current-hovered": isCurrentHoveredStar
+    });
 
-    return ignoreInlineStyles ? {} : starClasses
+    return ignoreInlineStyles ? {} : starClasses;
   }
 
   render() {
@@ -113,11 +112,7 @@ class Star extends React.Component {
           className={this.starClasses}
           style={this.starSvgStyle}
         >
-          <path
-            className="star"
-            style={this.pathStyle}
-            d={svgIconPath}
-          />
+          <path className="star" style={this.pathStyle} d={svgIconPath} />
         </svg>
       </div>
     );
