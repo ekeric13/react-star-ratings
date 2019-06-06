@@ -6,7 +6,7 @@
         "targets": {
           "browsers": ["last 2 versions", "Explorer 11"]
         },
-        "modules": false
+        "modules": "commonjs"
       }
     ],
     "@babel/preset-react"
