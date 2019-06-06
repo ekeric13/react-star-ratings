@@ -6,9 +6,14 @@ class StarRatings extends React.Component {
   state = {
     highestStarHovered: -Infinity
   };
-  fillId = `starGrad${Math.random()
-    .toFixed(15)
-    .slice(2)}`;
+
+  fillId;
+
+  constructor(props) {
+    super(props);
+
+    this.fillId = `star-grad-${this.props.numberOfStars}-${this.props.name}`;
+  }
 
   get starRatingsStyle() {
     const starRatingsStyle = {
@@ -43,7 +48,9 @@ class StarRatings extends React.Component {
     const hoveredRating = this.state.highestStarHovered;
     const currentRating = hoveredRating > 0 ? hoveredRating : selectedRating;
     // fix it at 2 decimal places and remove trailing 0s
-    let formattedRating = parseFloat(currentRating.toFixed(2)).toString();
+
+    const fixedRating = currentRating ? currentRating.toFixed(2) : 0;
+    let formattedRating = parseFloat(fixedRating).toString();
     if (Number.isInteger(currentRating)) {
       formattedRating = String(currentRating);
     }
@@ -59,7 +66,8 @@ class StarRatings extends React.Component {
     const ratingIsInteger = Number.isInteger(rating);
     let offsetValue = "0%";
     if (!ratingIsInteger) {
-      const firstTwoDecimals = rating
+      const guardedRating = rating ? rating : 0;
+      const firstTwoDecimals = guardedRating
         .toFixed(2)
         .split(".")[1]
         .slice(0, 2);
