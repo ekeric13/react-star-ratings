@@ -12,7 +12,9 @@ class StarRatings extends React.Component {
   constructor(props) {
     super(props);
 
-    this.fillId = `star-grad-${this.props.numberOfStars}-${this.props.name}`;
+    this.fillId = `star-grad-${this.props.numberOfStars}${
+      this.props.name ? `-${this.props.name}` : ""
+    }`;
   }
 
   get starRatingsStyle() {
