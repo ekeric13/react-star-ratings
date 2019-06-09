@@ -3,6 +3,7 @@
   "version": "2.3.0",
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "build/index.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "make build"
@@ -40,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react": "^16.1.0",
     "react-fatigue-dev": "github:ekeric13/react-fatigue-dev"
   },
   "dependencies": {
