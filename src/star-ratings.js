@@ -12,9 +12,7 @@ class StarRatings extends React.Component {
   constructor(props) {
     super(props);
 
-    this.fillId = `star-grad-${this.props.numberOfStars}${
-      this.props.name ? `-${this.props.name}` : ""
-    }`;
+    this.fillId = `star-grad-${this.props.rating}`;
   }
 
   get starRatingsStyle() {
@@ -229,10 +227,7 @@ StarRatings.defaultProps = {
   gradientPathName: "",
   ignoreInlineStyles: false,
   svgIconPath: "m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z",
-  svgIconViewBox: "0 0 51 48",
-  name: Math.random()
-    .toFixed(15)
-    .slice(2)
+  svgIconViewBox: "0 0 51 48"
 };
 
 export default StarRatings;
