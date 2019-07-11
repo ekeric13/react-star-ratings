@@ -229,7 +229,10 @@ StarRatings.defaultProps = {
   gradientPathName: "",
   ignoreInlineStyles: false,
   svgIconPath: "m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z",
-  svgIconViewBox: "0 0 51 48"
+  svgIconViewBox: "0 0 51 48",
+  name: Math.random()
+    .toFixed(15)
+    .slice(2)
 };
 
 export default StarRatings;
