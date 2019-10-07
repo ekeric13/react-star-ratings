@@ -68,6 +68,12 @@ class StarRatings extends React.Component {
     return offsetValue;
   }
 
+  get fillId() {
+    return `star-grad-${this.props.numberOfStars}${
+      this.props.name ? `-${this.props.name}` : ""
+    }`;
+  }
+
   hoverOverStar = starRating => {
     return () => {
       this.setState({
@@ -122,9 +128,7 @@ class StarRatings extends React.Component {
       return (
         <Star
           key={starRating}
-          fillId={`star-grad-${this.props.numberOfStars}${
-            this.props.name ? `-${this.props.name}` : ""
-          }`}
+          fillId={this.fillId}
           changeRating={
             changeRating ? () => changeRating(starRating, name) : null
           }
