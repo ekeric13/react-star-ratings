@@ -7,14 +7,6 @@ class StarRatings extends React.Component {
     highestStarHovered: -Infinity
   };
 
-  fillId;
-
-  constructor(props) {
-    super(props);
-
-    this.fillId = `star-grad-${this.props.rating}`;
-  }
-
   get starRatingsStyle() {
     const starRatingsStyle = {
       position: "relative",
@@ -74,6 +66,12 @@ class StarRatings extends React.Component {
       offsetValue = `${firstTwoDecimals}%`;
     }
     return offsetValue;
+  }
+
+  get fillId() {
+    return `star-grad-${this.props.numberOfStars}${
+      this.props.name ? `-${this.props.name}` : ""
+    }`;
   }
 
   hoverOverStar = starRating => {
