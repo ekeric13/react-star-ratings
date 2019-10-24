@@ -15,7 +15,7 @@ class Star extends React.Component {
 
     const starContainerStyle = {
       position: 'relative',
-      display: 'inline-block',
+      display: 'flex',
       verticalAlign: 'middle',
       paddingLeft: isFirstStar ? undefined : starSpacing,
       paddingRight: isLastStar ? undefined : starSpacing,
