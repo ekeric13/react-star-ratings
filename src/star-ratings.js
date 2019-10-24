@@ -12,7 +12,7 @@ class StarRatings extends React.Component {
     const starRatingsStyle = {
       position: 'relative',
       boxSizing: 'border-box',
-      display: 'inline-block'
+      display: 'inline-flex'
     };
     return this.props.ignoreInlineStyles ? {} : starRatingsStyle;
   }
