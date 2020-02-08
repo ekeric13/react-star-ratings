@@ -89,6 +89,8 @@ class StarRatings extends React.Component {
       starDimension,
       starSpacing,
       starRatedColor,
+      starStrokeColor,
+      starStrokeWidth,
       starEmptyColor,
       starHoverColor,
       gradientPathName,
@@ -135,6 +137,8 @@ class StarRatings extends React.Component {
           starSpacing={starSpacing}
           starHoverColor={starHoverColor}
           starRatedColor={starRatedColor}
+          starStrokeColor={starStrokeColor}
+          starStrokeWidth={starStrokeWidth}
           starEmptyColor={starEmptyColor}
           gradientPathName={gradientPathName}
           ignoreInlineStyles={ignoreInlineStyles}
@@ -182,6 +186,8 @@ StarRatings.propTypes = {
   changeRating: PropTypes.func,
   starHoverColor: PropTypes.string.isRequired,
   starRatedColor: PropTypes.string.isRequired,
+  starStrokeColor: PropTypes.string.isRequired,
+  starStrokeWidth: PropTypes.string.isRequired,
   starEmptyColor: PropTypes.string.isRequired,
   starDimension: PropTypes.string.isRequired,
   starSpacing: PropTypes.string.isRequired,
@@ -199,6 +205,8 @@ StarRatings.defaultProps = {
   changeRating: null,
   starHoverColor: 'rgb(230, 67, 47)',
   starRatedColor: 'rgb(109, 122, 130)',
+  starStrokeColor: 'rgb(109, 122, 130)',
+  starStrokeWidth: '0px',
   starEmptyColor: 'rgb(203, 211, 227)',
   starDimension: '50px',
   starSpacing: '7px',
