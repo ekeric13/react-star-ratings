@@ -117,6 +117,8 @@ var Star = function (_React$Component) {
           hoverMode = _props4.hoverMode,
           starEmptyColor = _props4.starEmptyColor,
           starRatedColor = _props4.starRatedColor,
+          starStrokeColor = _props4.starStrokeColor,
+          starStrokeWidth = _props4.starStrokeWidth,
           starHoverColor = _props4.starHoverColor,
           gradientPathName = _props4.gradientPathName,
           fillId = _props4.fillId,
@@ -131,6 +133,8 @@ var Star = function (_React$Component) {
       }
 
       var pathStyle = {
+        stroke: starStrokeColor,
+        strokeWidth: starStrokeWidth,
         fill: fill,
         transition: 'fill .2s ease-in-out'
       };
@@ -179,6 +183,8 @@ Star.propTypes = {
   starSpacing: _propTypes2.default.string.isRequired,
   starHoverColor: _propTypes2.default.string.isRequired,
   starRatedColor: _propTypes2.default.string.isRequired,
+  starStrokeColor: _propTypes2.default.string.isRequired,
+  starStrokeWidth: _propTypes2.default.string.isRequired,
   starEmptyColor: _propTypes2.default.string.isRequired,
   gradientPathName: _propTypes2.default.string.isRequired,
   ignoreInlineStyles: _propTypes2.default.bool.isRequired,

@@ -48,6 +48,8 @@ class Star extends React.Component {
       hoverMode,
       starEmptyColor,
       starRatedColor,
+      starStrokeColor,
+      starStrokeWidth,
       starHoverColor,
       gradientPathName,
       fillId,
@@ -65,6 +67,8 @@ class Star extends React.Component {
     }
 
     const pathStyle = {
+      stroke: starStrokeColor,
+      strokeWidth: starStrokeWidth,
       fill: fill,
       transition: 'fill .2s ease-in-out',
     };
@@ -140,6 +144,8 @@ Star.propTypes = {
   starSpacing: PropTypes.string.isRequired,
   starHoverColor: PropTypes.string.isRequired,
   starRatedColor: PropTypes.string.isRequired,
+  starStrokeColor: PropTypes.string.isRequired,
+  starStrokeWidth: PropTypes.string.isRequired,
   starEmptyColor: PropTypes.string.isRequired,
   gradientPathName: PropTypes.string.isRequired,
   ignoreInlineStyles: PropTypes.bool.isRequired,
