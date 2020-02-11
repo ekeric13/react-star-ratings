@@ -72,6 +72,8 @@ class Bar extends Component {
 | numberOfStars | number | 5 | The max number of stars to choose from or to display | `6` |
 | changeRating | function | ()=>{} | Callback that will be passed the new rating a user selects | `const setNewRating = (rating) => this.props.dispatch( fooActions.setRating(rating) )` |
 | starRatedColor | string | 'rgb(109, 122, 130)' | Color of stars that the user has rated | `black` |
+| starStrokeColor | string | 'rgb(109, 122, 130)' | Color of star borders | `blue` |
+| starStrokeWidth | string | '0px' | Width of star borders | `2px` |
 | starEmptyColor | string | 'rgb(203, 211, 227)' | Color of stars that the use hasn't rated | `grey` |
 | starHoverColor | string | 'rgb(230, 67, 47)' | Color of star when hovering over it in selection mode | `yellow` |
 | starDimension | string | '50px' | The width and height of the star | `15px` |
