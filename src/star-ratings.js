@@ -69,9 +69,9 @@ class StarRatings extends React.Component {
   }
 
   get fillId() {
-    return `star-grad-${this.props.numberOfStars}${
-      this.props.name ? `-${this.props.name}` : ""
-    }`;
+    return `star-grad-${this.props.numberOfStars}-${Math.round(
+      (this.props.rating % 1) * 10
+    )}${this.props.name ? `-${this.props.name}` : ""}`;
   }
 
   hoverOverStar = starRating => {
