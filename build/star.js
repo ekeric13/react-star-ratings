@@ -119,7 +119,6 @@ var Star = function (_React$Component) {
           starRatedColor = _props4.starRatedColor,
           starHoverColor = _props4.starHoverColor,
           gradientPathName = _props4.gradientPathName,
-          fillId = _props4.fillId,
           ignoreInlineStyles = _props4.ignoreInlineStyles;
 
 
@@ -127,7 +126,7 @@ var Star = function (_React$Component) {
       if (hoverMode) {
         if (isHovered) fill = starHoverColor;else fill = starEmptyColor;
       } else {
-        if (isPartiallyFullStar) fill = 'url(\'' + gradientPathName + '#' + fillId + '\')';else if (isStarred) fill = starRatedColor;else fill = starEmptyColor;
+        if (isPartiallyFullStar) fill = 'url(\'' + gradientPathName + '\')';else if (isStarred) fill = starRatedColor;else fill = starEmptyColor;
       }
 
       var pathStyle = {
@@ -164,7 +163,6 @@ var Star = function (_React$Component) {
 }(_react2.default.Component);
 
 Star.propTypes = {
-  fillId: _propTypes2.default.string.isRequired,
   changeRating: _propTypes2.default.func,
   hoverOverStar: _propTypes2.default.func,
   unHoverOverStar: _propTypes2.default.func,

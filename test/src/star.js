@@ -50,7 +50,6 @@ class Star extends React.Component {
       starRatedColor,
       starHoverColor,
       gradientPathName,
-      fillId,
       ignoreInlineStyles
     } = this.props;
 
@@ -59,7 +58,7 @@ class Star extends React.Component {
       if (isHovered) fill = starHoverColor;
       else fill = starEmptyColor;
     } else {
-      if (isPartiallyFullStar) fill = `url('${gradientPathName}#${fillId}')`;
+      if (isPartiallyFullStar) fill = `url('${gradientPathName}')`;
       else if (isStarred) fill = starRatedColor;
       else fill = starEmptyColor;
     }
@@ -125,7 +124,6 @@ class Star extends React.Component {
 }
 
 Star.propTypes = {
-  fillId: PropTypes.string.isRequired,
   changeRating: PropTypes.func,
   hoverOverStar: PropTypes.func,
   unHoverOverStar: PropTypes.func,
