@@ -42,7 +42,7 @@ var StarRatings = function (_React$Component) {
 
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StarRatings.__proto__ || Object.getPrototypeOf(StarRatings)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
       highestStarHovered: -Infinity
-    }, _this.fillId = 'starGrad' + Math.random().toFixed(15).slice(2), _this.hoverOverStar = function (starRating) {
+    }, _this.hoverOverStar = function (starRating) {
       return function () {
         _this.setState({
           highestStarHovered: starRating
@@ -90,7 +90,7 @@ var StarRatings = function (_React$Component) {
             null,
             _react2.default.createElement(
               'linearGradient',
-              { id: this.fillId, x1: '0%', y1: '0%', x2: '100%', y2: '0%' },
+              { x1: '0%', y1: '0%', x2: '100%', y2: '0%' },
               _react2.default.createElement('stop', { offset: '0%', className: 'stop-color-first', style: this.stopColorStyle(starRatedColor) }),
               _react2.default.createElement('stop', { offset: this.offsetValue, className: 'stop-color-first', style: this.stopColorStyle(starRatedColor) }),
               _react2.default.createElement('stop', { offset: this.offsetValue, className: 'stop-color-final', style: this.stopColorStyle(starEmptyColor) }),
@@ -197,7 +197,6 @@ var StarRatings = function (_React$Component) {
 
         return _react2.default.createElement(_star2.default, {
           key: starRating,
-          fillId: _this2.fillId,
           changeRating: changeRating ? function () {
             return changeRating(starRating, name);
           } : null,

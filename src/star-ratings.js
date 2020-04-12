@@ -6,7 +6,6 @@ class StarRatings extends React.Component {
   state = {
     highestStarHovered: -Infinity
   }
-  fillId = `starGrad${Math.random().toFixed(15).slice(2)}`;
 
   get starRatingsStyle() {
     const starRatingsStyle = {
@@ -120,7 +119,6 @@ class StarRatings extends React.Component {
       return (
         <Star
           key={starRating}
-          fillId={this.fillId}
           changeRating={changeRating ? () => changeRating(starRating, name) : null}
           hoverOverStar={changeRating ? this.hoverOverStar(starRating) : null}
           unHoverOverStar={changeRating ? this.unHoverOverStar : null}
@@ -162,7 +160,7 @@ class StarRatings extends React.Component {
           style={this.starGradientStyle}
         >
           <defs>
-            <linearGradient id={this.fillId} x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" className="stop-color-first" style={this.stopColorStyle(starRatedColor)} />
               <stop offset={this.offsetValue} className="stop-color-first" style={this.stopColorStyle(starRatedColor)} />
               <stop offset={this.offsetValue} className="stop-color-final" style={this.stopColorStyle(starEmptyColor)} />
