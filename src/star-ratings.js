@@ -193,7 +193,8 @@ StarRatings.propTypes = {
   ignoreInlineStyles: PropTypes.bool.isRequired,
   svgIconPath: PropTypes.string.isRequired,
   svgIconViewBox: PropTypes.string.isRequired,
-  name: PropTypes.string
+  name: PropTypes.string,
+  id: PropTypes.string,
 };
 
 StarRatings.defaultProps = {
@@ -210,7 +211,7 @@ StarRatings.defaultProps = {
   ignoreInlineStyles: false,
   svgIconPath: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z',
   svgIconViewBox: '0 0 51 48',
-  id: 'star-id'
+  id: `${Math.random().toFixed(15).slice(2)}`
 };
 
 export default StarRatings;
