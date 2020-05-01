@@ -6,7 +6,11 @@ class StarRatings extends React.Component {
   state = {
     highestStarHovered: -Infinity
   }
-  fillId = `starGrad${Math.random().toFixed(15).slice(2)}`;
+
+  constructor(props) {
+    super(props);
+    this.fillId = `starGrad${props.id}`;
+  }
 
   get starRatingsStyle() {
     const starRatingsStyle = {
@@ -55,7 +59,7 @@ class StarRatings extends React.Component {
     return `${formattedRating} ${starText}`;
   }
 
-  
+
   get offsetValue() {
     const rating = this.props.rating;
     const ratingIsInteger = Number.isInteger(rating);
@@ -98,7 +102,7 @@ class StarRatings extends React.Component {
       name
     } = this.props;
     const { highestStarHovered } = this.state;
-        
+
     const numberOfStarsArray = Array.apply(null, Array(numberOfStars));
 
     return numberOfStarsArray.map((_, index) => {
@@ -150,7 +154,7 @@ class StarRatings extends React.Component {
       starRatedColor,
       starEmptyColor
     } = this.props;
-    
+
     return (
       <div
         className="star-ratings"
@@ -189,7 +193,8 @@ StarRatings.propTypes = {
   ignoreInlineStyles: PropTypes.bool.isRequired,
   svgIconPath: PropTypes.string.isRequired,
   svgIconViewBox: PropTypes.string.isRequired,
-  name: PropTypes.string
+  name: PropTypes.string,
+  id: PropTypes.string,
 };
 
 StarRatings.defaultProps = {
@@ -205,7 +210,8 @@ StarRatings.defaultProps = {
   gradientPathName: '',
   ignoreInlineStyles: false,
   svgIconPath: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z',
-  svgIconViewBox: '0 0 51 48'
+  svgIconViewBox: '0 0 51 48',
+  id: `${Math.random().toFixed(15).slice(2)}`
 };
 
 export default StarRatings;
