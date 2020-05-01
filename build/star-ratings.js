@@ -29,30 +29,31 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var StarRatings = function (_React$Component) {
   _inherits(StarRatings, _React$Component);
 
-  function StarRatings() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
+  function StarRatings(props) {
     _classCallCheck(this, StarRatings);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = _possibleConstructorReturn(this, (StarRatings.__proto__ || Object.getPrototypeOf(StarRatings)).call(this, props));
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = StarRatings.__proto__ || Object.getPrototypeOf(StarRatings)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+    _this.state = {
       highestStarHovered: -Infinity
-    }, _this.fillId = 'starGrad' + Math.random().toFixed(15).slice(2), _this.hoverOverStar = function (starRating) {
+    };
+
+    _this.hoverOverStar = function (starRating) {
       return function () {
         _this.setState({
           highestStarHovered: starRating
         });
       };
-    }, _this.unHoverOverStar = function () {
+    };
+
+    _this.unHoverOverStar = function () {
       _this.setState({
         highestStarHovered: -Infinity
       });
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+    };
+
+    _this.fillId = 'starGrad' + props.id;
+    return _this;
   }
 
   _createClass(StarRatings, [{
@@ -256,7 +257,8 @@ StarRatings.defaultProps = {
   gradientPathName: '',
   ignoreInlineStyles: false,
   svgIconPath: 'm25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z',
-  svgIconViewBox: '0 0 51 48'
+  svgIconViewBox: '0 0 51 48',
+  id: 'star-id'
 };
 
 exports.default = StarRatings;
