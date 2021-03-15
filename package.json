@@ -23,6 +23,6 @@
   "dependencies": {
     "classnames": "^2.2.1",
     "prop-types": "^15.6.0",
-    "react": "^16.1.0"
+    "react": "^17.0.1"
   }
 }
