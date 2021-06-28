@@ -4,14 +4,14 @@ import Star from "./star";
 
 class StarRatings extends React.Component {
   state = {
-    highestStarHovered: -Infinity
+    highestStarHovered: -Infinity,
   };
 
   get starRatingsStyle() {
     const starRatingsStyle = {
       position: "relative",
       boxSizing: "border-box",
-      display: "inline-block"
+      display: "inline-block",
     };
     return this.props.ignoreInlineStyles ? {} : starRatingsStyle;
   }
@@ -22,7 +22,7 @@ class StarRatings extends React.Component {
       zIndex: "0",
       width: "0",
       height: "0",
-      visibility: "hidden"
+      visibility: "hidden",
     };
     return this.props.ignoreInlineStyles ? {} : starGradientStyle;
   }
@@ -30,7 +30,7 @@ class StarRatings extends React.Component {
   stopColorStyle(color) {
     const stopColorStyle = {
       stopColor: color,
-      stopOpacity: "1"
+      stopOpacity: "1",
     };
     return this.props.ignoreInlineStyles ? {} : stopColorStyle;
   }
@@ -59,10 +59,7 @@ class StarRatings extends React.Component {
     let offsetValue = "0%";
     if (!ratingIsInteger) {
       const guardedRating = rating ? rating : 0;
-      const firstTwoDecimals = guardedRating
-        .toFixed(2)
-        .split(".")[1]
-        .slice(0, 2);
+      const firstTwoDecimals = Math.trunc(guardedRating * 100) / 100;
       offsetValue = `${firstTwoDecimals}%`;
     }
     return offsetValue;
@@ -75,17 +72,17 @@ class StarRatings extends React.Component {
     }`;
   }
 
-  hoverOverStar = starRating => {
+  hoverOverStar = (starRating) => {
     return () => {
       this.setState({
-        highestStarHovered: starRating
+        highestStarHovered: starRating,
       });
     };
   };
 
   unHoverOverStar = () => {
     this.setState({
-      highestStarHovered: -Infinity
+      highestStarHovered: -Infinity,
     });
   };
 
@@ -103,7 +100,7 @@ class StarRatings extends React.Component {
       ignoreInlineStyles,
       svgIconPath,
       svgIconViewBox,
-      name
+      name,
     } = this.props;
     const { highestStarHovered } = this.state;
 
@@ -210,7 +207,7 @@ StarRatings.propTypes = {
   ignoreInlineStyles: PropTypes.bool.isRequired,
   svgIconPath: PropTypes.string.isRequired,
   svgIconViewBox: PropTypes.string.isRequired,
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 StarRatings.defaultProps = {
@@ -226,7 +223,7 @@ StarRatings.defaultProps = {
   gradientPathName: "",
   ignoreInlineStyles: false,
   svgIconPath: "m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z",
-  svgIconViewBox: "0 0 51 48"
+  svgIconViewBox: "0 0 51 48",
 };
 
 export default StarRatings;
