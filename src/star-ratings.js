@@ -59,9 +59,20 @@ class StarRatings extends React.Component {
     let offsetValue = "0%";
     if (!ratingIsInteger) {
       const guardedRating = rating ? rating : 0;
-      const firstTwoDecimals = Math.trunc(guardedRating * 100) / 100;
-      offsetValue = `${firstTwoDecimals}%`;
+
+      // This is utter and complete nonsense because Javascript doesn't know how to handle factorials or
+      // really just numbers in general. A simple solution could be a N % 1 but that'll give us a remainder
+      // in the trillionth place. There's also N - Math.floor(N), guess what, same result.
+      const firstTwoDecimalsArr = (Math.trunc(guardedRating * 100) / 100)
+        .toFixed(2)
+        .split(".");
+
+      // This should always be two, but, check
+      if (firstTwoDecimalsArr.length > 1) {
+        offsetValue = `${firstTwoDecimalsArr[1]}%`;
+      }
     }
+
     return offsetValue;
   }
 

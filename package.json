@@ -1,6 +1,6 @@
 {
   "name": "@deal/react-star-ratings",
-  "version": "1.0.9",
+  "version": "1.0.13",
   "description": "A customizable star rating component for selecting x stars or visualizing x stars",
   "main": "lib/index.js",
   "scripts": {
