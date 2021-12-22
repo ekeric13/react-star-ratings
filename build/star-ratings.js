@@ -198,8 +198,8 @@ var StarRatings = function (_React$Component) {
         return _react2.default.createElement(_star2.default, {
           key: starRating,
           fillId: _this2.fillId,
-          changeRating: changeRating ? function () {
-            return changeRating(starRating, name);
+          changeRating: changeRating ? function (event) {
+            return changeRating(starRating, name, event);
           } : null,
           hoverOverStar: changeRating ? _this2.hoverOverStar(starRating) : null,
           unHoverOverStar: changeRating ? _this2.unHoverOverStar : null,

@@ -121,7 +121,7 @@ class StarRatings extends React.Component {
         <Star
           key={starRating}
           fillId={this.fillId}
-          changeRating={changeRating ? () => changeRating(starRating, name) : null}
+          changeRating={changeRating ? (event) => changeRating(starRating, name, event) : null}
           hoverOverStar={changeRating ? this.hoverOverStar(starRating) : null}
           unHoverOverStar={changeRating ? this.unHoverOverStar : null}
           isStarred={isStarred}
