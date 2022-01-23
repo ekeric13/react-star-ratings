@@ -6,6 +6,8 @@
 
 ```shell
 npm install --save react-star-ratings
+or
+yarn add react-star-ratings
 ```
 
 ## Heads up
@@ -26,7 +28,7 @@ It is a lot more extendable and customizable.
 ## Usage
 
 ```js
-import StarRatings from './react-star-ratings';
+import StarRatings from 'react-star-ratings';
 
 class Foo extends Component {
     changeRating( newRating, name ) {
