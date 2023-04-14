@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 import Star from "./star";
 
 class StarRatings extends React.Component {
@@ -78,9 +79,7 @@ class StarRatings extends React.Component {
 
   get fillId() {
     // Using the rating's decimal place to set a unique id for the fill. e.g. a rating of 3.5 and 4.5 will use the same half fill star with id #star-grad-5.
-    return `star-grad-${Math.round((this.props.rating % 1) * 10)}${
-      this.props.name ? `-${this.props.name}` : ""
-    }`;
+    return `star-grad-${Math.round((this.props.rating % 1) * 10)}-${uuidv4()}`;
   }
 
   hoverOverStar = (starRating) => {

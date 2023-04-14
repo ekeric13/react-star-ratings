@@ -23,6 +23,7 @@
   "dependencies": {
     "classnames": "^2.2.1",
     "prop-types": "^15.6.0",
-    "react": "^17.0.1"
+    "react": "^17.0.1",
+    "uuid": "^9.0.0"
   }
 }
